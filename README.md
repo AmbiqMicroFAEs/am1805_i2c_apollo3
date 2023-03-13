@@ -11,7 +11,7 @@ Project folders:
 
 ![project](https://user-images.githubusercontent.com/69169627/224771774-62866f46-3eaa-4216-adb9-04cf23d1a782.png)
 
-Average current consumption o of the AM1805 (includes I2C transaction time):
+Average current consumption o of the AM1805 = 70 nA /3.3V (includes I2C transaction time):
 
 ![current](https://user-images.githubusercontent.com/69169627/224772048-7f530fa7-d2fe-4f05-822b-4c608ae81526.jpg)
 
