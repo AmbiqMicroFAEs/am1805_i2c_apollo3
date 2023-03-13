@@ -5,3 +5,13 @@ Project description: The basic functionality of the AM1805 is presented in this 
 Board configuration (AMA3B1KK-KBR + Microbus Development Shield + AM1805RTCEVB):
 
 ![board](https://user-images.githubusercontent.com/69169627/224769968-34f13347-1cbc-4ce1-8395-9cd324e5b1aa.jpg)
+
+Project folders:
+
+
+![project](https://user-images.githubusercontent.com/69169627/224771774-62866f46-3eaa-4216-adb9-04cf23d1a782.png)
+
+Average current consumption o of the AM1805 (includes I2C transaction time):
+
+![current](https://user-images.githubusercontent.com/69169627/224772048-7f530fa7-d2fe-4f05-822b-4c608ae81526.jpg)
+
