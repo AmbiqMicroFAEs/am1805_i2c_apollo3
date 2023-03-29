@@ -1,4 +1,4 @@
-Component: Arm Compiler for Embedded 6.19 Tool: armlink [5e73cb00]
+Component: Arm Compiler for Embedded 6.18 Tool: armlink [5e4cc100]
 
 ==============================================================================
 
@@ -57,6 +57,7 @@ Section Cross References
     main.o(.text.main) refers to amx805_device.o(.text.amx8x5_reset) for amx8x5_reset
     main.o(.text.main) refers to am_util_delay.o(.text.am_util_delay_us) for am_util_delay_us
     main.o(.text.main) refers to main.o(.text.amx8x5_wait_por_ready) for amx8x5_wait_por_ready
+    main.o(.text.main) refers to amx805_device.o(.text.amx8x5_reg_read) for amx8x5_reg_read
     main.o(.text.main) refers to am_util_delay.o(.text.am_util_delay_ms) for am_util_delay_ms
     main.o(.text.main) refers to main.o(.text.amx8x5_init) for amx8x5_init
     main.o(.text.main) refers to main.o(.text.sleep_loop) for sleep_loop
@@ -1203,6 +1204,7 @@ Section Cross References
     am_hal_flash.o(.ARM.exidx.text.am_hal_flash_write_protect_check) refers to am_hal_flash.o(.text.am_hal_flash_write_protect_check) for [Anonymous Symbol]
     am_hal_flash.o(.text.am_hal_flash_load_ui32) refers to am_hal_flash.o(.rodata.g_am_hal_flash) for g_am_hal_flash
     am_hal_flash.o(.ARM.exidx.text.am_hal_flash_load_ui32) refers to am_hal_flash.o(.text.am_hal_flash_load_ui32) for [Anonymous Symbol]
+    am_hal_flash.o(.text.am_hal_flash_store_ui32) refers to am_hal_flash.o(.rodata..L__const.am_hal_flash_store_ui32.SRAM_write_ui32) for .L__const.am_hal_flash_store_ui32.SRAM_write_ui32
     am_hal_flash.o(.ARM.exidx.text.am_hal_flash_store_ui32) refers to am_hal_flash.o(.text.am_hal_flash_store_ui32) for [Anonymous Symbol]
     am_hal_adc.o(.text.am_hal_adc_initialize) refers to am_hal_adc.o(.bss.g_ADCState) for g_ADCState
     am_hal_adc.o(.text.am_hal_adc_initialize) refers to am_hal_adc.o(.bss.g_ADCSlotsConfigured) for g_ADCSlotsConfigured
@@ -2466,7 +2468,6 @@ Removing Unused input sections from the image.
     Removing am_hal_flash.o(.ARM.exidx.text.am_hal_flash_store_ui32), (8 bytes).
     Removing am_hal_flash.o(.rodata.ui32SramMaxAddr), (4 bytes).
     Removing am_hal_flash.o(.data.SRAM_write_ui32), (12 bytes).
-    Removing am_hal_flash.o(.rodata..L__const.am_hal_flash_store_ui32.SRAM_write_ui32), (12 bytes).
     Removing am_hal_adc.o(.text), (0 bytes).
     Removing am_hal_adc.o(.text.am_hal_adc_initialize), (298 bytes).
     Removing am_hal_adc.o(.ARM.exidx.text.am_hal_adc_initialize), (8 bytes).
@@ -2562,7 +2563,7 @@ Removing Unused input sections from the image.
     Removing am_hal_ble.o(.ARM.exidx.text.am_hal_ble_check_status), (8 bytes).
     Removing am_hal_ble.o(.text.am_hal_ble_bus_lock), (84 bytes).
     Removing am_hal_ble.o(.ARM.exidx.text.am_hal_ble_bus_lock), (8 bytes).
-    Removing am_hal_ble.o(.text.am_hal_ble_cmd_write), (220 bytes).
+    Removing am_hal_ble.o(.text.am_hal_ble_cmd_write), (222 bytes).
     Removing am_hal_ble.o(.ARM.exidx.text.am_hal_ble_cmd_write), (8 bytes).
     Removing am_hal_ble.o(.text.am_hal_ble_fifo_drain), (188 bytes).
     Removing am_hal_ble.o(.ARM.exidx.text.am_hal_ble_fifo_drain), (8 bytes).
@@ -2720,7 +2721,7 @@ Removing Unused input sections from the image.
     Removing am_hal_global.o(.constdata), (14 bytes).
     Removing am_hal_global.o(.constdata), (4 bytes).
 
-1113 unused section(s) (total 97703 bytes) removed from the image.
+1112 unused section(s) (total 97693 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2906,182 +2907,183 @@ Image Symbol Table
     [Anonymous Symbol]                       0x0000c9ac   Section        0  am_hal_flash.o(.text.am_hal_flash_delay_status_check)
     [Anonymous Symbol]                       0x0000ca20   Section        0  am_hal_flash.o(.text.am_hal_flash_load_ui32)
     [Anonymous Symbol]                       0x0000ca38   Section        0  am_hal_flash.o(.text.am_hal_flash_store_ui32)
-    [Anonymous Symbol]                       0x0000ca74   Section        0  am_hal_gpio.o(.text.am_hal_gpio_pinconfig)
-    [Anonymous Symbol]                       0x0000ce38   Section        0  am_hal_gpio.o(.text.am_hal_gpio_state_read)
-    [Anonymous Symbol]                       0x0000cefc   Section        0  am_hal_gpio.o(.text.am_hal_gpio_state_write)
-    [Anonymous Symbol]                       0x0000cfd0   Section        0  am_hal_interrupt.o(.text.am_hal_interrupt_master_disable)
-    [Anonymous Symbol]                       0x0000cfd8   Section        0  am_hal_interrupt.o(.text.am_hal_interrupt_master_enable)
-    [Anonymous Symbol]                       0x0000cfe0   Section        0  am_hal_interrupt.o(.text.am_hal_interrupt_master_set)
-    [Anonymous Symbol]                       0x0000cfe8   Section        0  am_hal_iom.o(.text.am_hal_iom_CQDisable)
-    [Anonymous Symbol]                       0x0000d000   Section        0  am_hal_iom.o(.text.am_hal_iom_CQEnable)
-    [Anonymous Symbol]                       0x0000d044   Section        0  am_hal_iom.o(.text.am_hal_iom_initialize)
-    [Anonymous Symbol]                       0x0000d0e4   Section        0  am_hal_iom.o(.text.am_hal_iom_power_ctrl)
-    [Anonymous Symbol]                       0x0000d450   Section        0  am_hal_itm.o(.text.am_hal_itm_enable)
-    [Anonymous Symbol]                       0x0000d4b8   Section        0  am_hal_itm.o(.text.am_hal_itm_print)
-    [Anonymous Symbol]                       0x0000d4f8   Section        0  am_hal_itm.o(.text.am_hal_itm_stimulus_reg_byte_write)
-    [Anonymous Symbol]                       0x0000d524   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_blebuck_trim)
-    [Anonymous Symbol]                       0x0000d578   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_low_power_init)
-    [Anonymous Symbol]                       0x0000d694   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_disable)
-    [Anonymous Symbol]                       0x0000d750   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_enable)
-    [Anonymous Symbol]                       0x0000d834   Section        0  am_hal_queue.o(.text.am_hal_queue_init)
-    [Anonymous Symbol]                       0x0000d864   Section        0  am_hal_queue.o(.text.am_hal_queue_item_add)
-    [Anonymous Symbol]                       0x0000d908   Section        0  am_hal_queue.o(.text.am_hal_queue_item_get)
-    [Anonymous Symbol]                       0x0000d9a8   Section        0  am_hal_rtc.o(.text.am_hal_rtc_osc_disable)
-    [Anonymous Symbol]                       0x0000d9bc   Section        0  am_hal_tpiu.o(.text.am_hal_tpiu_enable)
-    [Anonymous Symbol]                       0x0000dab8   Section        0  am_hal_uart.o(.text.am_hal_uart_configure)
-    [Anonymous Symbol]                       0x0000dc88   Section        0  am_hal_uart.o(.text.am_hal_uart_initialize)
-    [Anonymous Symbol]                       0x0000dd24   Section        0  am_hal_uart.o(.text.am_hal_uart_interrupt_clear)
-    [Anonymous Symbol]                       0x0000dd80   Section        0  am_hal_uart.o(.text.am_hal_uart_interrupt_disable)
-    [Anonymous Symbol]                       0x0000dde0   Section        0  am_hal_uart.o(.text.am_hal_uart_interrupt_enable)
-    [Anonymous Symbol]                       0x0000de40   Section        0  am_hal_uart.o(.text.am_hal_uart_power_control)
-    [Anonymous Symbol]                       0x0000e03c   Section        0  am_hal_uart.o(.text.am_hal_uart_transfer)
-    [Anonymous Symbol]                       0x0000e09c   Section        0  iom_dma.o(.text.am_iomaster0_isr)
-    [Anonymous Symbol]                       0x0000e0f8   Section        0  iom_dma.o(.text.am_iomaster1_isr)
-    [Anonymous Symbol]                       0x0000e168   Section        0  iom_dma.o(.text.am_iomaster2_isr)
-    [Anonymous Symbol]                       0x0000e1c8   Section        0  iom_dma.o(.text.am_iomaster3_isr)
-    [Anonymous Symbol]                       0x0000e228   Section        0  iom_dma.o(.text.am_iomaster4_isr)
-    [Anonymous Symbol]                       0x0000e288   Section        0  iom_dma.o(.text.am_iomaster5_isr)
-    [Anonymous Symbol]                       0x0000e2e8   Section        0  am_util_delay.o(.text.am_util_delay_ms)
-    [Anonymous Symbol]                       0x0000e318   Section        0  am_util_delay.o(.text.am_util_delay_us)
-    [Anonymous Symbol]                       0x0000e348   Section        0  am_util_stdio.o(.text.am_util_stdio_printf)
-    [Anonymous Symbol]                       0x0000e3a4   Section        0  am_util_stdio.o(.text.am_util_stdio_printf_init)
-    [Anonymous Symbol]                       0x0000e3b8   Section        0  am_util_stdio.o(.text.am_util_stdio_vsprintf)
-    [Anonymous Symbol]                       0x0000ea0c   Section        0  am_util_string.o(.text.am_util_string_strnicmp)
-    [Anonymous Symbol]                       0x0000eac4   Section        0  am_util_time.o(.text.am_util_time_computeDayofWeek)
-    [Anonymous Symbol]                       0x0000ec94   Section        0  main.o(.text.amx8x5_ext1_gen)
-    [Anonymous Symbol]                       0x0000ecbc   Section        0  main.o(.text.amx8x5_ext_reset)
-    [Anonymous Symbol]                       0x0000ed18   Section        0  main.o(.text.amx8x5_init)
-    [Anonymous Symbol]                       0x0000edb0   Section        0  main.o(.text.amx8x5_int_clear)
-    [Anonymous Symbol]                       0x0000edf0   Section        0  amx805_device.o(.text.amx8x5_reg_block_read)
-    [Anonymous Symbol]                       0x0000ee48   Section        0  amx805_device.o(.text.amx8x5_reg_block_write)
-    [Anonymous Symbol]                       0x0000ee98   Section        0  amx805_device.o(.text.amx8x5_reg_clear)
-    [Anonymous Symbol]                       0x0000eeec   Section        0  amx805_device.o(.text.amx8x5_reg_read)
-    [Anonymous Symbol]                       0x0000ef4c   Section        0  amx805_device.o(.text.amx8x5_reg_set)
-    [Anonymous Symbol]                       0x0000efa0   Section        0  amx805_device.o(.text.amx8x5_reg_write)
-    [Anonymous Symbol]                       0x0000efd8   Section        0  amx805_device.o(.text.amx8x5_reset)
-    [Anonymous Symbol]                       0x0000f008   Section        0  amx805_device.o(.text.amx8x5_sleep_set)
-    [Anonymous Symbol]                       0x0000f154   Section        0  amx805_device.o(.text.amx8x5_time_get)
-    [Anonymous Symbol]                       0x0000f254   Section        0  amx805_device.o(.text.amx8x5_time_set)
-    [Anonymous Symbol]                       0x0000f42c   Section        0  main.o(.text.amx8x5_wait_por_ready)
-    bcd_to_dec                               0x0000f485   Thumb Code    30  amx805_device.o(.text.bcd_to_dec)
-    [Anonymous Symbol]                       0x0000f484   Section        0  amx805_device.o(.text.bcd_to_dec)
-    buffer_configure                         0x0000f4a5   Thumb Code   254  am_hal_uart.o(.text.buffer_configure)
-    [Anonymous Symbol]                       0x0000f4a4   Section        0  am_hal_uart.o(.text.buffer_configure)
-    compute_freq                             0x0000f5a5   Thumb Code    84  iom_dma.o(.text.compute_freq)
-    [Anonymous Symbol]                       0x0000f5a4   Section        0  iom_dma.o(.text.compute_freq)
-    config_baudrate                          0x0000f5f9   Thumb Code   340  am_hal_uart.o(.text.config_baudrate)
-    [Anonymous Symbol]                       0x0000f5f8   Section        0  am_hal_uart.o(.text.config_baudrate)
-    [Anonymous Symbol]                       0x0000f74c   Section        0  uart_debug.o(.text.debug_printf_enable)
-    dec_to_bcd                               0x0000f781   Thumb Code    46  amx805_device.o(.text.dec_to_bcd)
-    [Anonymous Symbol]                       0x0000f780   Section        0  amx805_device.o(.text.dec_to_bcd)
-    decstr_to_int                            0x0000f7b1   Thumb Code   166  am_util_stdio.o(.text.decstr_to_int)
-    [Anonymous Symbol]                       0x0000f7b0   Section        0  am_util_stdio.o(.text.decstr_to_int)
-    divu64_10                                0x0000f859   Thumb Code   280  am_util_stdio.o(.text.divu64_10)
-    [Anonymous Symbol]                       0x0000f858   Section        0  am_util_stdio.o(.text.divu64_10)
-    ftoa                                     0x0000f971   Thumb Code   560  am_util_stdio.o(.text.ftoa)
-    [Anonymous Symbol]                       0x0000f970   Section        0  am_util_stdio.o(.text.ftoa)
-    [Anonymous Symbol]                       0x0000fba0   Section        0  iom_i2c.o(.text.i2c_callback)
-    [Anonymous Symbol]                       0x0000fcc8   Section        0  iom_dma.o(.text.iom_dma_configure)
-    [Anonymous Symbol]                       0x0000fd08   Section        0  iom_dma.o(.text.iom_dma_enable)
-    [Anonymous Symbol]                       0x0000fd70   Section        0  iom_dma.o(.text.iom_dma_i2c_configure)
-    [Anonymous Symbol]                       0x0000fe74   Section        0  iom_dma.o(.text.iom_dma_int_enable)
-    [Anonymous Symbol]                       0x0000fec4   Section        0  iom_dma.o(.text.iom_dma_spi_configure)
-    [Anonymous Symbol]                       0x0000ff78   Section        0  iom_dma.o(.text.iom_dma_start)
-    iom_get_interface_clock_cfg              0x00010295   Thumb Code   602  iom_dma.o(.text.iom_get_interface_clock_cfg)
-    [Anonymous Symbol]                       0x00010294   Section        0  iom_dma.o(.text.iom_get_interface_clock_cfg)
-    [Anonymous Symbol]                       0x000104f0   Section        0  iom_i2c.o(.text.iom_gpio_config)
-    [Anonymous Symbol]                       0x00010594   Section        0  iom_dma.o(.text.iom_i2c_dma_pop_tail)
-    [Anonymous Symbol]                       0x000106b8   Section        0  iom_i2c.o(.text.iom_i2c_init)
-    [Anonymous Symbol]                       0x00010744   Section        0  iom_i2c.o(.text.iom_i2c_read)
-    [Anonymous Symbol]                       0x00010848   Section        0  iom_i2c.o(.text.iom_i2c_write)
-    [Anonymous Symbol]                       0x0001094c   Section        0  uart_debug.o(.text.itm_printf_enable)
-    [Anonymous Symbol]                       0x00010990   Section        0  main.o(.text.low_power_init)
-    [Anonymous Symbol]                       0x0001099c   Section        0  main.o(.text.main)
-    [Anonymous Symbol]                       0x00010a38   Section        0  main.o(.text.mthToIndex)
-    ndigits_in_hex                           0x00010a85   Thumb Code    62  am_util_stdio.o(.text.ndigits_in_hex)
-    [Anonymous Symbol]                       0x00010a84   Section        0  am_util_stdio.o(.text.ndigits_in_hex)
-    ndigits_in_i64                           0x00010ac5   Thumb Code    48  am_util_stdio.o(.text.ndigits_in_i64)
-    [Anonymous Symbol]                       0x00010ac4   Section        0  am_util_stdio.o(.text.ndigits_in_i64)
-    ndigits_in_u64                           0x00010af5   Thumb Code    60  am_util_stdio.o(.text.ndigits_in_u64)
-    [Anonymous Symbol]                       0x00010af4   Section        0  am_util_stdio.o(.text.ndigits_in_u64)
-    onebit                                   0x00010b31   Thumb Code    40  iom_dma.o(.text.onebit)
-    [Anonymous Symbol]                       0x00010b30   Section        0  iom_dma.o(.text.onebit)
-    padbuffer                                0x00010b59   Thumb Code    80  am_util_stdio.o(.text.padbuffer)
-    [Anonymous Symbol]                       0x00010b58   Section        0  am_util_stdio.o(.text.padbuffer)
-    pincfg_equ                               0x00010ba9   Thumb Code    34  am_hal_gpio.o(.text.pincfg_equ)
-    [Anonymous Symbol]                       0x00010ba8   Section        0  am_hal_gpio.o(.text.pincfg_equ)
-    pwrctrl_periph_disable_msk_check         0x00010bcd   Thumb Code   222  am_hal_pwrctrl.o(.text.pwrctrl_periph_disable_msk_check)
-    [Anonymous Symbol]                       0x00010bcc   Section        0  am_hal_pwrctrl.o(.text.pwrctrl_periph_disable_msk_check)
-    read_nonblocking                         0x00010cad   Thumb Code   212  am_hal_uart.o(.text.read_nonblocking)
-    [Anonymous Symbol]                       0x00010cac   Section        0  am_hal_uart.o(.text.read_nonblocking)
-    read_timeout                             0x00010d81   Thumb Code   206  am_hal_uart.o(.text.read_timeout)
-    [Anonymous Symbol]                       0x00010d80   Section        0  am_hal_uart.o(.text.read_timeout)
-    rx_queue_update                          0x00010e51   Thumb Code    76  am_hal_uart.o(.text.rx_queue_update)
-    [Anonymous Symbol]                       0x00010e50   Section        0  am_hal_uart.o(.text.rx_queue_update)
-    set_LPMMODE                              0x00010e9d   Thumb Code   102  am_hal_cachectrl.o(.text.set_LPMMODE)
-    [Anonymous Symbol]                       0x00010e9c   Section        0  am_hal_cachectrl.o(.text.set_LPMMODE)
-    set_RDWAIT                               0x00010f05   Thumb Code   102  am_hal_cachectrl.o(.text.set_RDWAIT)
-    [Anonymous Symbol]                       0x00010f04   Section        0  am_hal_cachectrl.o(.text.set_RDWAIT)
-    set_SEDELAY                              0x00010f6d   Thumb Code   102  am_hal_cachectrl.o(.text.set_SEDELAY)
-    [Anonymous Symbol]                       0x00010f6c   Section        0  am_hal_cachectrl.o(.text.set_SEDELAY)
-    simobuck_updates                         0x00010fd5   Thumb Code   160  am_hal_pwrctrl.o(.text.simobuck_updates)
-    [Anonymous Symbol]                       0x00010fd4   Section        0  am_hal_pwrctrl.o(.text.simobuck_updates)
-    simple_strlen                            0x00011075   Thumb Code    54  am_util_stdio.o(.text.simple_strlen)
-    [Anonymous Symbol]                       0x00011074   Section        0  am_util_stdio.o(.text.simple_strlen)
-    [Anonymous Symbol]                       0x000110ac   Section        0  main.o(.text.sleep_loop)
-    [Anonymous Symbol]                       0x000112bc   Section        0  main.o(.text.toVal)
-    tx_queue_update                          0x00011309   Thumb Code   110  am_hal_uart.o(.text.tx_queue_update)
-    [Anonymous Symbol]                       0x00011308   Section        0  am_hal_uart.o(.text.tx_queue_update)
-    uart_fifo_read                           0x00011379   Thumb Code   134  am_hal_uart.o(.text.uart_fifo_read)
-    [Anonymous Symbol]                       0x00011378   Section        0  am_hal_uart.o(.text.uart_fifo_read)
-    uart_fifo_write                          0x00011401   Thumb Code   108  am_hal_uart.o(.text.uart_fifo_write)
-    [Anonymous Symbol]                       0x00011400   Section        0  am_hal_uart.o(.text.uart_fifo_write)
-    [Anonymous Symbol]                       0x0001146c   Section        0  uart_debug.o(.text.uart_printf_enable)
-    [Anonymous Symbol]                       0x000114dc   Section        0  uart_debug.o(.text.uart_string_print)
-    uint64_to_hexstr                         0x00011529   Thumb Code   192  am_util_stdio.o(.text.uint64_to_hexstr)
-    [Anonymous Symbol]                       0x00011528   Section        0  am_util_stdio.o(.text.uint64_to_hexstr)
-    uint64_to_str                            0x000115e9   Thumb Code   136  am_util_stdio.o(.text.uint64_to_str)
-    [Anonymous Symbol]                       0x000115e8   Section        0  am_util_stdio.o(.text.uint64_to_str)
-    write_nonblocking                        0x00011671   Thumb Code   210  am_hal_uart.o(.text.write_nonblocking)
-    [Anonymous Symbol]                       0x00011670   Section        0  am_hal_uart.o(.text.write_nonblocking)
-    write_timeout                            0x00011745   Thumb Code   206  am_hal_uart.o(.text.write_timeout)
-    [Anonymous Symbol]                       0x00011744   Section        0  am_hal_uart.o(.text.write_timeout)
-    $v0                                      0x00011814   Number         0  d2f.o(x$fpl$d2f)
-    x$fpl$d2f                                0x00011814   Section       98  d2f.o(x$fpl$d2f)
-    $v0                                      0x00011876   Number         0  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dnaninf                            0x00011876   Section      156  dnaninf.o(x$fpl$dnaninf)
-    $v0                                      0x00011912   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fpinit                             0x00011912   Section       26  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x0001192c   Number         0  fretinf.o(x$fpl$fretinf)
-    x$fpl$fretinf                            0x0001192c   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$usenofp                            0x00011936   Section        0  usenofp.o(x$fpl$usenofp)
-    g_iDaysPerMonth                          0x00011b88   Data          48  am_util_time.o(.rodata.g_iDaysPerMonth)
-    [Anonymous Symbol]                       0x00011b88   Section        0  am_util_time.o(.rodata.g_iDaysPerMonth)
-    g_iMonthOffsets                          0x00011bb8   Data          48  am_util_time.o(.rodata.g_iMonthOffsets)
-    [Anonymous Symbol]                       0x00011bb8   Section        0  am_util_time.o(.rodata.g_iMonthOffsets)
-    g_sBspUartConfig                         0x00011be8   Data          40  uart_debug.o(.rodata.g_sBspUartConfig)
-    [Anonymous Symbol]                       0x00011be8   Section        0  uart_debug.o(.rodata.g_sBspUartConfig)
-    g_ui8Bit76Capabilities                   0x00011c10   Data          50  am_hal_gpio.o(.rodata.g_ui8Bit76Capabilities)
-    [Anonymous Symbol]                       0x00011c10   Section        0  am_hal_gpio.o(.rodata.g_ui8Bit76Capabilities)
-    g_ui8Inpen                               0x00011c42   Data          50  am_hal_gpio.o(.rodata.g_ui8Inpen)
-    [Anonymous Symbol]                       0x00011c42   Section        0  am_hal_gpio.o(.rodata.g_ui8Inpen)
-    g_ui8NCEtable                            0x00011c74   Data         200  am_hal_gpio.o(.rodata.g_ui8NCEtable)
-    [Anonymous Symbol]                       0x00011c74   Section        0  am_hal_gpio.o(.rodata.g_ui8NCEtable)
-    g_ui8nCEpins                             0x00011d3c   Data          50  am_hal_gpio.o(.rodata.g_ui8nCEpins)
-    [Anonymous Symbol]                       0x00011d3c   Section        0  am_hal_gpio.o(.rodata.g_ui8nCEpins)
-    .L.str.30                                0x00011d6e   Data          35  main.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00011d6e   Section        0  main.o(.rodata.str1.1)
-    .L.str.29                                0x00011d8f   Data           2  main.o(.rodata.str1.1)
-    .L.str.27                                0x00011d91   Data           5  main.o(.rodata.str1.1)
-    .L.str.22                                0x00011d96   Data           6  main.o(.rodata.str1.1)
-    .L.str.23                                0x00011d9c   Data           8  main.o(.rodata.str1.1)
-    .L.str.21                                0x00011da4   Data          25  main.o(.rodata.str1.1)
-    .L.str.25                                0x00011dbd   Data           6  main.o(.rodata.str1.1)
-    .L.str.26                                0x00011dc1   Data           2  main.o(.rodata.str1.1)
-    .L.str.24                                0x00011dc3   Data           6  main.o(.rodata.str1.1)
-    .L.str.20                                0x00011dc9   Data          12  main.o(.rodata.str1.1)
-    .L.str.19                                0x00011dd5   Data           9  main.o(.rodata.str1.1)
-    .L.str.28                                0x00011dde   Data           7  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0000ca6c   Section        0  am_hal_gpio.o(.text.am_hal_gpio_pinconfig)
+    [Anonymous Symbol]                       0x0000ce30   Section        0  am_hal_gpio.o(.text.am_hal_gpio_state_read)
+    [Anonymous Symbol]                       0x0000cef4   Section        0  am_hal_gpio.o(.text.am_hal_gpio_state_write)
+    [Anonymous Symbol]                       0x0000cfc8   Section        0  am_hal_interrupt.o(.text.am_hal_interrupt_master_disable)
+    [Anonymous Symbol]                       0x0000cfd0   Section        0  am_hal_interrupt.o(.text.am_hal_interrupt_master_enable)
+    [Anonymous Symbol]                       0x0000cfd8   Section        0  am_hal_interrupt.o(.text.am_hal_interrupt_master_set)
+    [Anonymous Symbol]                       0x0000cfe0   Section        0  am_hal_iom.o(.text.am_hal_iom_CQDisable)
+    [Anonymous Symbol]                       0x0000cff8   Section        0  am_hal_iom.o(.text.am_hal_iom_CQEnable)
+    [Anonymous Symbol]                       0x0000d03c   Section        0  am_hal_iom.o(.text.am_hal_iom_initialize)
+    [Anonymous Symbol]                       0x0000d0dc   Section        0  am_hal_iom.o(.text.am_hal_iom_power_ctrl)
+    [Anonymous Symbol]                       0x0000d448   Section        0  am_hal_itm.o(.text.am_hal_itm_enable)
+    [Anonymous Symbol]                       0x0000d4b0   Section        0  am_hal_itm.o(.text.am_hal_itm_print)
+    [Anonymous Symbol]                       0x0000d4f0   Section        0  am_hal_itm.o(.text.am_hal_itm_stimulus_reg_byte_write)
+    [Anonymous Symbol]                       0x0000d51c   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_blebuck_trim)
+    [Anonymous Symbol]                       0x0000d570   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_low_power_init)
+    [Anonymous Symbol]                       0x0000d68c   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_disable)
+    [Anonymous Symbol]                       0x0000d748   Section        0  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_enable)
+    [Anonymous Symbol]                       0x0000d82c   Section        0  am_hal_queue.o(.text.am_hal_queue_init)
+    [Anonymous Symbol]                       0x0000d85c   Section        0  am_hal_queue.o(.text.am_hal_queue_item_add)
+    [Anonymous Symbol]                       0x0000d900   Section        0  am_hal_queue.o(.text.am_hal_queue_item_get)
+    [Anonymous Symbol]                       0x0000d9a0   Section        0  am_hal_rtc.o(.text.am_hal_rtc_osc_disable)
+    [Anonymous Symbol]                       0x0000d9b4   Section        0  am_hal_tpiu.o(.text.am_hal_tpiu_enable)
+    [Anonymous Symbol]                       0x0000dab0   Section        0  am_hal_uart.o(.text.am_hal_uart_configure)
+    [Anonymous Symbol]                       0x0000dc80   Section        0  am_hal_uart.o(.text.am_hal_uart_initialize)
+    [Anonymous Symbol]                       0x0000dd1c   Section        0  am_hal_uart.o(.text.am_hal_uart_interrupt_clear)
+    [Anonymous Symbol]                       0x0000dd78   Section        0  am_hal_uart.o(.text.am_hal_uart_interrupt_disable)
+    [Anonymous Symbol]                       0x0000ddd8   Section        0  am_hal_uart.o(.text.am_hal_uart_interrupt_enable)
+    [Anonymous Symbol]                       0x0000de38   Section        0  am_hal_uart.o(.text.am_hal_uart_power_control)
+    [Anonymous Symbol]                       0x0000e034   Section        0  am_hal_uart.o(.text.am_hal_uart_transfer)
+    [Anonymous Symbol]                       0x0000e094   Section        0  iom_dma.o(.text.am_iomaster0_isr)
+    [Anonymous Symbol]                       0x0000e0f0   Section        0  iom_dma.o(.text.am_iomaster1_isr)
+    [Anonymous Symbol]                       0x0000e160   Section        0  iom_dma.o(.text.am_iomaster2_isr)
+    [Anonymous Symbol]                       0x0000e1c0   Section        0  iom_dma.o(.text.am_iomaster3_isr)
+    [Anonymous Symbol]                       0x0000e220   Section        0  iom_dma.o(.text.am_iomaster4_isr)
+    [Anonymous Symbol]                       0x0000e280   Section        0  iom_dma.o(.text.am_iomaster5_isr)
+    [Anonymous Symbol]                       0x0000e2e0   Section        0  am_util_delay.o(.text.am_util_delay_ms)
+    [Anonymous Symbol]                       0x0000e310   Section        0  am_util_delay.o(.text.am_util_delay_us)
+    [Anonymous Symbol]                       0x0000e340   Section        0  am_util_stdio.o(.text.am_util_stdio_printf)
+    [Anonymous Symbol]                       0x0000e39c   Section        0  am_util_stdio.o(.text.am_util_stdio_printf_init)
+    [Anonymous Symbol]                       0x0000e3b0   Section        0  am_util_stdio.o(.text.am_util_stdio_vsprintf)
+    [Anonymous Symbol]                       0x0000ea04   Section        0  am_util_string.o(.text.am_util_string_strnicmp)
+    [Anonymous Symbol]                       0x0000eabc   Section        0  am_util_time.o(.text.am_util_time_computeDayofWeek)
+    [Anonymous Symbol]                       0x0000ec8c   Section        0  main.o(.text.amx8x5_ext1_gen)
+    [Anonymous Symbol]                       0x0000ecb4   Section        0  main.o(.text.amx8x5_ext_reset)
+    [Anonymous Symbol]                       0x0000ed10   Section        0  main.o(.text.amx8x5_init)
+    [Anonymous Symbol]                       0x0000eda8   Section        0  main.o(.text.amx8x5_int_clear)
+    [Anonymous Symbol]                       0x0000ede8   Section        0  amx805_device.o(.text.amx8x5_reg_block_read)
+    [Anonymous Symbol]                       0x0000ee40   Section        0  amx805_device.o(.text.amx8x5_reg_block_write)
+    [Anonymous Symbol]                       0x0000ee90   Section        0  amx805_device.o(.text.amx8x5_reg_clear)
+    [Anonymous Symbol]                       0x0000eee4   Section        0  amx805_device.o(.text.amx8x5_reg_read)
+    [Anonymous Symbol]                       0x0000ef44   Section        0  amx805_device.o(.text.amx8x5_reg_set)
+    [Anonymous Symbol]                       0x0000ef98   Section        0  amx805_device.o(.text.amx8x5_reg_write)
+    [Anonymous Symbol]                       0x0000efd0   Section        0  amx805_device.o(.text.amx8x5_reset)
+    [Anonymous Symbol]                       0x0000f000   Section        0  amx805_device.o(.text.amx8x5_sleep_set)
+    [Anonymous Symbol]                       0x0000f14c   Section        0  amx805_device.o(.text.amx8x5_time_get)
+    [Anonymous Symbol]                       0x0000f24c   Section        0  amx805_device.o(.text.amx8x5_time_set)
+    [Anonymous Symbol]                       0x0000f424   Section        0  main.o(.text.amx8x5_wait_por_ready)
+    bcd_to_dec                               0x0000f47d   Thumb Code    30  amx805_device.o(.text.bcd_to_dec)
+    [Anonymous Symbol]                       0x0000f47c   Section        0  amx805_device.o(.text.bcd_to_dec)
+    buffer_configure                         0x0000f49d   Thumb Code   254  am_hal_uart.o(.text.buffer_configure)
+    [Anonymous Symbol]                       0x0000f49c   Section        0  am_hal_uart.o(.text.buffer_configure)
+    compute_freq                             0x0000f59d   Thumb Code    84  iom_dma.o(.text.compute_freq)
+    [Anonymous Symbol]                       0x0000f59c   Section        0  iom_dma.o(.text.compute_freq)
+    config_baudrate                          0x0000f5f1   Thumb Code   340  am_hal_uart.o(.text.config_baudrate)
+    [Anonymous Symbol]                       0x0000f5f0   Section        0  am_hal_uart.o(.text.config_baudrate)
+    [Anonymous Symbol]                       0x0000f744   Section        0  uart_debug.o(.text.debug_printf_enable)
+    dec_to_bcd                               0x0000f779   Thumb Code    46  amx805_device.o(.text.dec_to_bcd)
+    [Anonymous Symbol]                       0x0000f778   Section        0  amx805_device.o(.text.dec_to_bcd)
+    decstr_to_int                            0x0000f7a9   Thumb Code   166  am_util_stdio.o(.text.decstr_to_int)
+    [Anonymous Symbol]                       0x0000f7a8   Section        0  am_util_stdio.o(.text.decstr_to_int)
+    divu64_10                                0x0000f851   Thumb Code   280  am_util_stdio.o(.text.divu64_10)
+    [Anonymous Symbol]                       0x0000f850   Section        0  am_util_stdio.o(.text.divu64_10)
+    ftoa                                     0x0000f969   Thumb Code   560  am_util_stdio.o(.text.ftoa)
+    [Anonymous Symbol]                       0x0000f968   Section        0  am_util_stdio.o(.text.ftoa)
+    [Anonymous Symbol]                       0x0000fb98   Section        0  iom_i2c.o(.text.i2c_callback)
+    [Anonymous Symbol]                       0x0000fcc0   Section        0  iom_dma.o(.text.iom_dma_configure)
+    [Anonymous Symbol]                       0x0000fd00   Section        0  iom_dma.o(.text.iom_dma_enable)
+    [Anonymous Symbol]                       0x0000fd68   Section        0  iom_dma.o(.text.iom_dma_i2c_configure)
+    [Anonymous Symbol]                       0x0000fe6c   Section        0  iom_dma.o(.text.iom_dma_int_enable)
+    [Anonymous Symbol]                       0x0000febc   Section        0  iom_dma.o(.text.iom_dma_spi_configure)
+    [Anonymous Symbol]                       0x0000ff70   Section        0  iom_dma.o(.text.iom_dma_start)
+    iom_get_interface_clock_cfg              0x0001028d   Thumb Code   602  iom_dma.o(.text.iom_get_interface_clock_cfg)
+    [Anonymous Symbol]                       0x0001028c   Section        0  iom_dma.o(.text.iom_get_interface_clock_cfg)
+    [Anonymous Symbol]                       0x000104e8   Section        0  iom_i2c.o(.text.iom_gpio_config)
+    [Anonymous Symbol]                       0x0001058c   Section        0  iom_dma.o(.text.iom_i2c_dma_pop_tail)
+    [Anonymous Symbol]                       0x000106b0   Section        0  iom_i2c.o(.text.iom_i2c_init)
+    [Anonymous Symbol]                       0x0001073c   Section        0  iom_i2c.o(.text.iom_i2c_read)
+    [Anonymous Symbol]                       0x00010840   Section        0  iom_i2c.o(.text.iom_i2c_write)
+    [Anonymous Symbol]                       0x00010944   Section        0  uart_debug.o(.text.itm_printf_enable)
+    [Anonymous Symbol]                       0x00010988   Section        0  main.o(.text.low_power_init)
+    [Anonymous Symbol]                       0x00010994   Section        0  main.o(.text.main)
+    [Anonymous Symbol]                       0x00010a80   Section        0  main.o(.text.mthToIndex)
+    ndigits_in_hex                           0x00010acd   Thumb Code    62  am_util_stdio.o(.text.ndigits_in_hex)
+    [Anonymous Symbol]                       0x00010acc   Section        0  am_util_stdio.o(.text.ndigits_in_hex)
+    ndigits_in_i64                           0x00010b0d   Thumb Code    48  am_util_stdio.o(.text.ndigits_in_i64)
+    [Anonymous Symbol]                       0x00010b0c   Section        0  am_util_stdio.o(.text.ndigits_in_i64)
+    ndigits_in_u64                           0x00010b3d   Thumb Code    60  am_util_stdio.o(.text.ndigits_in_u64)
+    [Anonymous Symbol]                       0x00010b3c   Section        0  am_util_stdio.o(.text.ndigits_in_u64)
+    onebit                                   0x00010b79   Thumb Code    40  iom_dma.o(.text.onebit)
+    [Anonymous Symbol]                       0x00010b78   Section        0  iom_dma.o(.text.onebit)
+    padbuffer                                0x00010ba1   Thumb Code    80  am_util_stdio.o(.text.padbuffer)
+    [Anonymous Symbol]                       0x00010ba0   Section        0  am_util_stdio.o(.text.padbuffer)
+    pincfg_equ                               0x00010bf1   Thumb Code    34  am_hal_gpio.o(.text.pincfg_equ)
+    [Anonymous Symbol]                       0x00010bf0   Section        0  am_hal_gpio.o(.text.pincfg_equ)
+    pwrctrl_periph_disable_msk_check         0x00010c15   Thumb Code   222  am_hal_pwrctrl.o(.text.pwrctrl_periph_disable_msk_check)
+    [Anonymous Symbol]                       0x00010c14   Section        0  am_hal_pwrctrl.o(.text.pwrctrl_periph_disable_msk_check)
+    read_nonblocking                         0x00010cf5   Thumb Code   212  am_hal_uart.o(.text.read_nonblocking)
+    [Anonymous Symbol]                       0x00010cf4   Section        0  am_hal_uart.o(.text.read_nonblocking)
+    read_timeout                             0x00010dc9   Thumb Code   206  am_hal_uart.o(.text.read_timeout)
+    [Anonymous Symbol]                       0x00010dc8   Section        0  am_hal_uart.o(.text.read_timeout)
+    rx_queue_update                          0x00010e99   Thumb Code    76  am_hal_uart.o(.text.rx_queue_update)
+    [Anonymous Symbol]                       0x00010e98   Section        0  am_hal_uart.o(.text.rx_queue_update)
+    set_LPMMODE                              0x00010ee5   Thumb Code   102  am_hal_cachectrl.o(.text.set_LPMMODE)
+    [Anonymous Symbol]                       0x00010ee4   Section        0  am_hal_cachectrl.o(.text.set_LPMMODE)
+    set_RDWAIT                               0x00010f4d   Thumb Code   102  am_hal_cachectrl.o(.text.set_RDWAIT)
+    [Anonymous Symbol]                       0x00010f4c   Section        0  am_hal_cachectrl.o(.text.set_RDWAIT)
+    set_SEDELAY                              0x00010fb5   Thumb Code   102  am_hal_cachectrl.o(.text.set_SEDELAY)
+    [Anonymous Symbol]                       0x00010fb4   Section        0  am_hal_cachectrl.o(.text.set_SEDELAY)
+    simobuck_updates                         0x0001101d   Thumb Code   160  am_hal_pwrctrl.o(.text.simobuck_updates)
+    [Anonymous Symbol]                       0x0001101c   Section        0  am_hal_pwrctrl.o(.text.simobuck_updates)
+    simple_strlen                            0x000110bd   Thumb Code    54  am_util_stdio.o(.text.simple_strlen)
+    [Anonymous Symbol]                       0x000110bc   Section        0  am_util_stdio.o(.text.simple_strlen)
+    [Anonymous Symbol]                       0x000110f4   Section        0  main.o(.text.sleep_loop)
+    [Anonymous Symbol]                       0x00011304   Section        0  main.o(.text.toVal)
+    tx_queue_update                          0x00011351   Thumb Code   110  am_hal_uart.o(.text.tx_queue_update)
+    [Anonymous Symbol]                       0x00011350   Section        0  am_hal_uart.o(.text.tx_queue_update)
+    uart_fifo_read                           0x000113c1   Thumb Code   134  am_hal_uart.o(.text.uart_fifo_read)
+    [Anonymous Symbol]                       0x000113c0   Section        0  am_hal_uart.o(.text.uart_fifo_read)
+    uart_fifo_write                          0x00011449   Thumb Code   108  am_hal_uart.o(.text.uart_fifo_write)
+    [Anonymous Symbol]                       0x00011448   Section        0  am_hal_uart.o(.text.uart_fifo_write)
+    [Anonymous Symbol]                       0x000114b4   Section        0  uart_debug.o(.text.uart_printf_enable)
+    [Anonymous Symbol]                       0x00011524   Section        0  uart_debug.o(.text.uart_string_print)
+    uint64_to_hexstr                         0x00011571   Thumb Code   192  am_util_stdio.o(.text.uint64_to_hexstr)
+    [Anonymous Symbol]                       0x00011570   Section        0  am_util_stdio.o(.text.uint64_to_hexstr)
+    uint64_to_str                            0x00011631   Thumb Code   136  am_util_stdio.o(.text.uint64_to_str)
+    [Anonymous Symbol]                       0x00011630   Section        0  am_util_stdio.o(.text.uint64_to_str)
+    write_nonblocking                        0x000116b9   Thumb Code   210  am_hal_uart.o(.text.write_nonblocking)
+    [Anonymous Symbol]                       0x000116b8   Section        0  am_hal_uart.o(.text.write_nonblocking)
+    write_timeout                            0x0001178d   Thumb Code   206  am_hal_uart.o(.text.write_timeout)
+    [Anonymous Symbol]                       0x0001178c   Section        0  am_hal_uart.o(.text.write_timeout)
+    $v0                                      0x0001185c   Number         0  d2f.o(x$fpl$d2f)
+    x$fpl$d2f                                0x0001185c   Section       98  d2f.o(x$fpl$d2f)
+    $v0                                      0x000118be   Number         0  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dnaninf                            0x000118be   Section      156  dnaninf.o(x$fpl$dnaninf)
+    $v0                                      0x0001195a   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x0001195a   Section       26  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x00011974   Number         0  fretinf.o(x$fpl$fretinf)
+    x$fpl$fretinf                            0x00011974   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$usenofp                            0x0001197e   Section        0  usenofp.o(x$fpl$usenofp)
+    .L__const.am_hal_flash_store_ui32.SRAM_write_ui32 0x00011980   Data          12  am_hal_flash.o(.rodata..L__const.am_hal_flash_store_ui32.SRAM_write_ui32)
+    g_iDaysPerMonth                          0x00011bdc   Data          48  am_util_time.o(.rodata.g_iDaysPerMonth)
+    [Anonymous Symbol]                       0x00011bdc   Section        0  am_util_time.o(.rodata.g_iDaysPerMonth)
+    g_iMonthOffsets                          0x00011c0c   Data          48  am_util_time.o(.rodata.g_iMonthOffsets)
+    [Anonymous Symbol]                       0x00011c0c   Section        0  am_util_time.o(.rodata.g_iMonthOffsets)
+    g_sBspUartConfig                         0x00011c3c   Data          40  uart_debug.o(.rodata.g_sBspUartConfig)
+    [Anonymous Symbol]                       0x00011c3c   Section        0  uart_debug.o(.rodata.g_sBspUartConfig)
+    g_ui8Bit76Capabilities                   0x00011c64   Data          50  am_hal_gpio.o(.rodata.g_ui8Bit76Capabilities)
+    [Anonymous Symbol]                       0x00011c64   Section        0  am_hal_gpio.o(.rodata.g_ui8Bit76Capabilities)
+    g_ui8Inpen                               0x00011c96   Data          50  am_hal_gpio.o(.rodata.g_ui8Inpen)
+    [Anonymous Symbol]                       0x00011c96   Section        0  am_hal_gpio.o(.rodata.g_ui8Inpen)
+    g_ui8NCEtable                            0x00011cc8   Data         200  am_hal_gpio.o(.rodata.g_ui8NCEtable)
+    [Anonymous Symbol]                       0x00011cc8   Section        0  am_hal_gpio.o(.rodata.g_ui8NCEtable)
+    g_ui8nCEpins                             0x00011d90   Data          50  am_hal_gpio.o(.rodata.g_ui8nCEpins)
+    [Anonymous Symbol]                       0x00011d90   Section        0  am_hal_gpio.o(.rodata.g_ui8nCEpins)
+    .L.str.30                                0x00011dc2   Data          35  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00011dc2   Section        0  main.o(.rodata.str1.1)
+    .L.str.29                                0x00011de3   Data           2  main.o(.rodata.str1.1)
+    .L.str.27                                0x00011de5   Data           5  main.o(.rodata.str1.1)
+    .L.str.22                                0x00011dea   Data           6  main.o(.rodata.str1.1)
+    .L.str.23                                0x00011df0   Data           8  main.o(.rodata.str1.1)
+    .L.str.21                                0x00011df8   Data          25  main.o(.rodata.str1.1)
+    .L.str.25                                0x00011e11   Data           6  main.o(.rodata.str1.1)
+    .L.str.26                                0x00011e15   Data           2  main.o(.rodata.str1.1)
+    .L.str.24                                0x00011e17   Data           6  main.o(.rodata.str1.1)
+    .L.str.20                                0x00011e1d   Data          12  main.o(.rodata.str1.1)
+    .L.str.19                                0x00011e29   Data           9  main.o(.rodata.str1.1)
+    .L.str.28                                0x00011e32   Data           7  main.o(.rodata.str1.1)
     .data                                    0x10000000   Section        4  am_hal_global.o(.data)
     g_sIOMI2cConfig                          0x10000050   Data           8  iom_i2c.o(.data.g_sIOMI2cConfig)
     [Anonymous Symbol]                       0x10000050   Section        0  iom_i2c.o(.data.g_sIOMI2cConfig)
@@ -3253,113 +3255,113 @@ Image Symbol Table
     am_hal_flash_delay                       0x0000c95d   Thumb Code    80  am_hal_flash.o(.text.am_hal_flash_delay)
     am_hal_flash_delay_status_check          0x0000c9ad   Thumb Code   116  am_hal_flash.o(.text.am_hal_flash_delay_status_check)
     am_hal_flash_load_ui32                   0x0000ca21   Thumb Code    24  am_hal_flash.o(.text.am_hal_flash_load_ui32)
-    am_hal_flash_store_ui32                  0x0000ca39   Thumb Code    60  am_hal_flash.o(.text.am_hal_flash_store_ui32)
-    am_hal_gpio_pinconfig                    0x0000ca75   Thumb Code   964  am_hal_gpio.o(.text.am_hal_gpio_pinconfig)
-    am_hal_gpio_state_read                   0x0000ce39   Thumb Code   196  am_hal_gpio.o(.text.am_hal_gpio_state_read)
-    am_hal_gpio_state_write                  0x0000cefd   Thumb Code   212  am_hal_gpio.o(.text.am_hal_gpio_state_write)
-    am_hal_interrupt_master_disable          0x0000cfd1   Thumb Code     8  am_hal_interrupt.o(.text.am_hal_interrupt_master_disable)
-    am_hal_interrupt_master_enable           0x0000cfd9   Thumb Code     8  am_hal_interrupt.o(.text.am_hal_interrupt_master_enable)
-    am_hal_interrupt_master_set              0x0000cfe1   Thumb Code     6  am_hal_interrupt.o(.text.am_hal_interrupt_master_set)
-    am_hal_iom_CQDisable                     0x0000cfe9   Thumb Code    24  am_hal_iom.o(.text.am_hal_iom_CQDisable)
-    am_hal_iom_CQEnable                      0x0000d001   Thumb Code    68  am_hal_iom.o(.text.am_hal_iom_CQEnable)
-    am_hal_iom_initialize                    0x0000d045   Thumb Code   158  am_hal_iom.o(.text.am_hal_iom_initialize)
-    am_hal_iom_power_ctrl                    0x0000d0e5   Thumb Code   874  am_hal_iom.o(.text.am_hal_iom_power_ctrl)
-    am_hal_itm_enable                        0x0000d451   Thumb Code   102  am_hal_itm.o(.text.am_hal_itm_enable)
-    am_hal_itm_print                         0x0000d4b9   Thumb Code    64  am_hal_itm.o(.text.am_hal_itm_print)
-    am_hal_itm_stimulus_reg_byte_write       0x0000d4f9   Thumb Code    44  am_hal_itm.o(.text.am_hal_itm_stimulus_reg_byte_write)
-    am_hal_pwrctrl_blebuck_trim              0x0000d525   Thumb Code    82  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_blebuck_trim)
-    am_hal_pwrctrl_low_power_init            0x0000d579   Thumb Code   282  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_low_power_init)
-    am_hal_pwrctrl_periph_disable            0x0000d695   Thumb Code   186  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_disable)
-    am_hal_pwrctrl_periph_enable             0x0000d751   Thumb Code   226  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_enable)
-    am_hal_queue_init                        0x0000d835   Thumb Code    46  am_hal_queue.o(.text.am_hal_queue_init)
-    am_hal_queue_item_add                    0x0000d865   Thumb Code   162  am_hal_queue.o(.text.am_hal_queue_item_add)
-    am_hal_queue_item_get                    0x0000d909   Thumb Code   158  am_hal_queue.o(.text.am_hal_queue_item_get)
-    am_hal_rtc_osc_disable                   0x0000d9a9   Thumb Code    18  am_hal_rtc.o(.text.am_hal_rtc_osc_disable)
-    am_hal_tpiu_enable                       0x0000d9bd   Thumb Code   252  am_hal_tpiu.o(.text.am_hal_tpiu_enable)
-    am_hal_uart_configure                    0x0000dab9   Thumb Code   464  am_hal_uart.o(.text.am_hal_uart_configure)
-    am_hal_uart_initialize                   0x0000dc89   Thumb Code   156  am_hal_uart.o(.text.am_hal_uart_initialize)
-    am_hal_uart_interrupt_clear              0x0000dd25   Thumb Code    90  am_hal_uart.o(.text.am_hal_uart_interrupt_clear)
-    am_hal_uart_interrupt_disable            0x0000dd81   Thumb Code    94  am_hal_uart.o(.text.am_hal_uart_interrupt_disable)
-    am_hal_uart_interrupt_enable             0x0000dde1   Thumb Code    94  am_hal_uart.o(.text.am_hal_uart_interrupt_enable)
-    am_hal_uart_power_control                0x0000de41   Thumb Code   506  am_hal_uart.o(.text.am_hal_uart_power_control)
-    am_hal_uart_transfer                     0x0000e03d   Thumb Code    96  am_hal_uart.o(.text.am_hal_uart_transfer)
-    am_iomaster0_isr                         0x0000e09d   Thumb Code    92  iom_dma.o(.text.am_iomaster0_isr)
-    am_iomaster1_isr                         0x0000e0f9   Thumb Code   110  iom_dma.o(.text.am_iomaster1_isr)
-    am_iomaster2_isr                         0x0000e169   Thumb Code    94  iom_dma.o(.text.am_iomaster2_isr)
-    am_iomaster3_isr                         0x0000e1c9   Thumb Code    94  iom_dma.o(.text.am_iomaster3_isr)
-    am_iomaster4_isr                         0x0000e229   Thumb Code    94  iom_dma.o(.text.am_iomaster4_isr)
-    am_iomaster5_isr                         0x0000e289   Thumb Code    94  iom_dma.o(.text.am_iomaster5_isr)
-    am_util_delay_ms                         0x0000e2e9   Thumb Code    48  am_util_delay.o(.text.am_util_delay_ms)
-    am_util_delay_us                         0x0000e319   Thumb Code    48  am_util_delay.o(.text.am_util_delay_us)
-    am_util_stdio_printf                     0x0000e349   Thumb Code    92  am_util_stdio.o(.text.am_util_stdio_printf)
-    am_util_stdio_printf_init                0x0000e3a5   Thumb Code    20  am_util_stdio.o(.text.am_util_stdio_printf_init)
-    am_util_stdio_vsprintf                   0x0000e3b9   Thumb Code  1620  am_util_stdio.o(.text.am_util_stdio_vsprintf)
-    am_util_string_strnicmp                  0x0000ea0d   Thumb Code   182  am_util_string.o(.text.am_util_string_strnicmp)
-    am_util_time_computeDayofWeek            0x0000eac5   Thumb Code   462  am_util_time.o(.text.am_util_time_computeDayofWeek)
-    amx8x5_ext1_gen                          0x0000ec95   Thumb Code    40  main.o(.text.amx8x5_ext1_gen)
-    amx8x5_ext_reset                         0x0000ecbd   Thumb Code    90  main.o(.text.amx8x5_ext_reset)
-    amx8x5_init                              0x0000ed19   Thumb Code   152  main.o(.text.amx8x5_init)
-    amx8x5_int_clear                         0x0000edb1   Thumb Code    62  main.o(.text.amx8x5_int_clear)
-    amx8x5_reg_block_read                    0x0000edf1   Thumb Code    88  amx805_device.o(.text.amx8x5_reg_block_read)
-    amx8x5_reg_block_write                   0x0000ee49   Thumb Code    80  amx805_device.o(.text.amx8x5_reg_block_write)
-    amx8x5_reg_clear                         0x0000ee99   Thumb Code    82  amx805_device.o(.text.amx8x5_reg_clear)
-    amx8x5_reg_read                          0x0000eeed   Thumb Code    94  amx805_device.o(.text.amx8x5_reg_read)
-    amx8x5_reg_set                           0x0000ef4d   Thumb Code    82  amx805_device.o(.text.amx8x5_reg_set)
-    amx8x5_reg_write                         0x0000efa1   Thumb Code    56  amx805_device.o(.text.amx8x5_reg_write)
-    amx8x5_reset                             0x0000efd9   Thumb Code    46  amx805_device.o(.text.amx8x5_reset)
-    amx8x5_sleep_set                         0x0000f009   Thumb Code   330  amx805_device.o(.text.amx8x5_sleep_set)
-    amx8x5_time_get                          0x0000f155   Thumb Code   254  amx805_device.o(.text.amx8x5_time_get)
-    amx8x5_time_set                          0x0000f255   Thumb Code   472  amx805_device.o(.text.amx8x5_time_set)
-    amx8x5_wait_por_ready                    0x0000f42d   Thumb Code    86  main.o(.text.amx8x5_wait_por_ready)
-    debug_printf_enable                      0x0000f74d   Thumb Code    50  uart_debug.o(.text.debug_printf_enable)
-    i2c_callback                             0x0000fba1   Thumb Code   294  iom_i2c.o(.text.i2c_callback)
-    iom_dma_configure                        0x0000fcc9   Thumb Code    64  iom_dma.o(.text.iom_dma_configure)
-    iom_dma_enable                           0x0000fd09   Thumb Code   104  iom_dma.o(.text.iom_dma_enable)
-    iom_dma_i2c_configure                    0x0000fd71   Thumb Code   260  iom_dma.o(.text.iom_dma_i2c_configure)
-    iom_dma_int_enable                       0x0000fe75   Thumb Code    78  iom_dma.o(.text.iom_dma_int_enable)
-    iom_dma_spi_configure                    0x0000fec5   Thumb Code   178  iom_dma.o(.text.iom_dma_spi_configure)
-    iom_dma_start                            0x0000ff79   Thumb Code   796  iom_dma.o(.text.iom_dma_start)
-    iom_gpio_config                          0x000104f1   Thumb Code   164  iom_i2c.o(.text.iom_gpio_config)
-    iom_i2c_dma_pop_tail                     0x00010595   Thumb Code   292  iom_dma.o(.text.iom_i2c_dma_pop_tail)
-    iom_i2c_init                             0x000106b9   Thumb Code   138  iom_i2c.o(.text.iom_i2c_init)
-    iom_i2c_read                             0x00010745   Thumb Code   260  iom_i2c.o(.text.iom_i2c_read)
-    iom_i2c_write                            0x00010849   Thumb Code   258  iom_i2c.o(.text.iom_i2c_write)
-    itm_printf_enable                        0x0001094d   Thumb Code    68  uart_debug.o(.text.itm_printf_enable)
-    low_power_init                           0x00010991   Thumb Code    12  main.o(.text.low_power_init)
-    main                                     0x0001099d   Thumb Code   156  main.o(.text.main)
-    mthToIndex                               0x00010a39   Thumb Code    74  main.o(.text.mthToIndex)
-    sleep_loop                               0x000110ad   Thumb Code   528  main.o(.text.sleep_loop)
-    toVal                                    0x000112bd   Thumb Code    74  main.o(.text.toVal)
-    uart_printf_enable                       0x0001146d   Thumb Code   110  uart_debug.o(.text.uart_printf_enable)
-    uart_string_print                        0x000114dd   Thumb Code    74  uart_debug.o(.text.uart_string_print)
-    __aeabi_d2f                              0x00011815   Thumb Code     0  d2f.o(x$fpl$d2f)
-    _d2f                                     0x00011815   Thumb Code    98  d2f.o(x$fpl$d2f)
-    __fpl_dnaninf                            0x00011877   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    _fp_init                                 0x00011913   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x0001192b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x0001192b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fpl_fretinf                            0x0001192d   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    __I$use$fp                               0x00011936   Number         0  usenofp.o(x$fpl$usenofp)
-    am_cattr                                 0x00011936   Data         256  am_util_string.o(.rodata.am_cattr)
-    am_hal_cachectrl_defaults                0x00011a36   Data           3  am_hal_cachectrl.o(.rodata.am_hal_cachectrl_defaults)
-    am_hal_pwrctrl_peripheral_control        0x00011a3c   Data         180  am_hal_pwrctrl.o(.rodata.am_hal_pwrctrl_peripheral_control)
-    g_AM_HAL_GPIO_DISABLE                    0x00011af0   Data           4  am_hal_gpio.o(.rodata.g_AM_HAL_GPIO_DISABLE)
-    g_GPIO_COM_UART_RX                       0x00011af4   Data           4  uart_debug.o(.rodata.g_GPIO_COM_UART_RX)
-    g_GPIO_COM_UART_TX                       0x00011af8   Data           4  uart_debug.o(.rodata.g_GPIO_COM_UART_TX)
-    g_GPIO_ITM_SWO                           0x00011afc   Data           4  uart_debug.o(.rodata.g_GPIO_ITM_SWO)
-    g_GPIO_RTC_CLKOUT                        0x00011b00   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_CLKOUT)
-    g_GPIO_RTC_EXTI                          0x00011b04   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_EXTI)
-    g_GPIO_RTC_EXTR                          0x00011b08   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_EXTR)
-    g_GPIO_RTC_FOUT                          0x00011b0c   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_FOUT)
-    g_GPIO_RTC_PSW                           0x00011b10   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_PSW)
-    g_GPIO_RTC_RST                           0x00011b14   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_RST)
-    g_GPIO_RTC_SCL                           0x00011b18   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_SCL)
-    g_GPIO_RTC_SDA                           0x00011b1c   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_SDA)
-    g_GPIO_RTC_TIRQ                          0x00011b20   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_TIRQ)
-    g_GPIO_RTC_WDI                           0x00011b24   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_WDI)
-    g_am_hal_flash                           0x00011b28   Data          96  am_hal_flash.o(.rodata.g_am_hal_flash)
-    Region$$Table$$Base                      0x00011e74   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00011e94   Number         0  anon$$obj.o(Region$$Table)
+    am_hal_flash_store_ui32                  0x0000ca39   Thumb Code    50  am_hal_flash.o(.text.am_hal_flash_store_ui32)
+    am_hal_gpio_pinconfig                    0x0000ca6d   Thumb Code   964  am_hal_gpio.o(.text.am_hal_gpio_pinconfig)
+    am_hal_gpio_state_read                   0x0000ce31   Thumb Code   196  am_hal_gpio.o(.text.am_hal_gpio_state_read)
+    am_hal_gpio_state_write                  0x0000cef5   Thumb Code   212  am_hal_gpio.o(.text.am_hal_gpio_state_write)
+    am_hal_interrupt_master_disable          0x0000cfc9   Thumb Code     8  am_hal_interrupt.o(.text.am_hal_interrupt_master_disable)
+    am_hal_interrupt_master_enable           0x0000cfd1   Thumb Code     8  am_hal_interrupt.o(.text.am_hal_interrupt_master_enable)
+    am_hal_interrupt_master_set              0x0000cfd9   Thumb Code     6  am_hal_interrupt.o(.text.am_hal_interrupt_master_set)
+    am_hal_iom_CQDisable                     0x0000cfe1   Thumb Code    24  am_hal_iom.o(.text.am_hal_iom_CQDisable)
+    am_hal_iom_CQEnable                      0x0000cff9   Thumb Code    68  am_hal_iom.o(.text.am_hal_iom_CQEnable)
+    am_hal_iom_initialize                    0x0000d03d   Thumb Code   158  am_hal_iom.o(.text.am_hal_iom_initialize)
+    am_hal_iom_power_ctrl                    0x0000d0dd   Thumb Code   874  am_hal_iom.o(.text.am_hal_iom_power_ctrl)
+    am_hal_itm_enable                        0x0000d449   Thumb Code   102  am_hal_itm.o(.text.am_hal_itm_enable)
+    am_hal_itm_print                         0x0000d4b1   Thumb Code    64  am_hal_itm.o(.text.am_hal_itm_print)
+    am_hal_itm_stimulus_reg_byte_write       0x0000d4f1   Thumb Code    44  am_hal_itm.o(.text.am_hal_itm_stimulus_reg_byte_write)
+    am_hal_pwrctrl_blebuck_trim              0x0000d51d   Thumb Code    82  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_blebuck_trim)
+    am_hal_pwrctrl_low_power_init            0x0000d571   Thumb Code   282  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_low_power_init)
+    am_hal_pwrctrl_periph_disable            0x0000d68d   Thumb Code   186  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_disable)
+    am_hal_pwrctrl_periph_enable             0x0000d749   Thumb Code   226  am_hal_pwrctrl.o(.text.am_hal_pwrctrl_periph_enable)
+    am_hal_queue_init                        0x0000d82d   Thumb Code    46  am_hal_queue.o(.text.am_hal_queue_init)
+    am_hal_queue_item_add                    0x0000d85d   Thumb Code   162  am_hal_queue.o(.text.am_hal_queue_item_add)
+    am_hal_queue_item_get                    0x0000d901   Thumb Code   158  am_hal_queue.o(.text.am_hal_queue_item_get)
+    am_hal_rtc_osc_disable                   0x0000d9a1   Thumb Code    18  am_hal_rtc.o(.text.am_hal_rtc_osc_disable)
+    am_hal_tpiu_enable                       0x0000d9b5   Thumb Code   252  am_hal_tpiu.o(.text.am_hal_tpiu_enable)
+    am_hal_uart_configure                    0x0000dab1   Thumb Code   464  am_hal_uart.o(.text.am_hal_uart_configure)
+    am_hal_uart_initialize                   0x0000dc81   Thumb Code   156  am_hal_uart.o(.text.am_hal_uart_initialize)
+    am_hal_uart_interrupt_clear              0x0000dd1d   Thumb Code    90  am_hal_uart.o(.text.am_hal_uart_interrupt_clear)
+    am_hal_uart_interrupt_disable            0x0000dd79   Thumb Code    94  am_hal_uart.o(.text.am_hal_uart_interrupt_disable)
+    am_hal_uart_interrupt_enable             0x0000ddd9   Thumb Code    94  am_hal_uart.o(.text.am_hal_uart_interrupt_enable)
+    am_hal_uart_power_control                0x0000de39   Thumb Code   506  am_hal_uart.o(.text.am_hal_uart_power_control)
+    am_hal_uart_transfer                     0x0000e035   Thumb Code    96  am_hal_uart.o(.text.am_hal_uart_transfer)
+    am_iomaster0_isr                         0x0000e095   Thumb Code    92  iom_dma.o(.text.am_iomaster0_isr)
+    am_iomaster1_isr                         0x0000e0f1   Thumb Code   110  iom_dma.o(.text.am_iomaster1_isr)
+    am_iomaster2_isr                         0x0000e161   Thumb Code    94  iom_dma.o(.text.am_iomaster2_isr)
+    am_iomaster3_isr                         0x0000e1c1   Thumb Code    94  iom_dma.o(.text.am_iomaster3_isr)
+    am_iomaster4_isr                         0x0000e221   Thumb Code    94  iom_dma.o(.text.am_iomaster4_isr)
+    am_iomaster5_isr                         0x0000e281   Thumb Code    94  iom_dma.o(.text.am_iomaster5_isr)
+    am_util_delay_ms                         0x0000e2e1   Thumb Code    48  am_util_delay.o(.text.am_util_delay_ms)
+    am_util_delay_us                         0x0000e311   Thumb Code    48  am_util_delay.o(.text.am_util_delay_us)
+    am_util_stdio_printf                     0x0000e341   Thumb Code    92  am_util_stdio.o(.text.am_util_stdio_printf)
+    am_util_stdio_printf_init                0x0000e39d   Thumb Code    20  am_util_stdio.o(.text.am_util_stdio_printf_init)
+    am_util_stdio_vsprintf                   0x0000e3b1   Thumb Code  1620  am_util_stdio.o(.text.am_util_stdio_vsprintf)
+    am_util_string_strnicmp                  0x0000ea05   Thumb Code   182  am_util_string.o(.text.am_util_string_strnicmp)
+    am_util_time_computeDayofWeek            0x0000eabd   Thumb Code   462  am_util_time.o(.text.am_util_time_computeDayofWeek)
+    amx8x5_ext1_gen                          0x0000ec8d   Thumb Code    40  main.o(.text.amx8x5_ext1_gen)
+    amx8x5_ext_reset                         0x0000ecb5   Thumb Code    90  main.o(.text.amx8x5_ext_reset)
+    amx8x5_init                              0x0000ed11   Thumb Code   152  main.o(.text.amx8x5_init)
+    amx8x5_int_clear                         0x0000eda9   Thumb Code    62  main.o(.text.amx8x5_int_clear)
+    amx8x5_reg_block_read                    0x0000ede9   Thumb Code    88  amx805_device.o(.text.amx8x5_reg_block_read)
+    amx8x5_reg_block_write                   0x0000ee41   Thumb Code    80  amx805_device.o(.text.amx8x5_reg_block_write)
+    amx8x5_reg_clear                         0x0000ee91   Thumb Code    82  amx805_device.o(.text.amx8x5_reg_clear)
+    amx8x5_reg_read                          0x0000eee5   Thumb Code    94  amx805_device.o(.text.amx8x5_reg_read)
+    amx8x5_reg_set                           0x0000ef45   Thumb Code    82  amx805_device.o(.text.amx8x5_reg_set)
+    amx8x5_reg_write                         0x0000ef99   Thumb Code    56  amx805_device.o(.text.amx8x5_reg_write)
+    amx8x5_reset                             0x0000efd1   Thumb Code    46  amx805_device.o(.text.amx8x5_reset)
+    amx8x5_sleep_set                         0x0000f001   Thumb Code   330  amx805_device.o(.text.amx8x5_sleep_set)
+    amx8x5_time_get                          0x0000f14d   Thumb Code   254  amx805_device.o(.text.amx8x5_time_get)
+    amx8x5_time_set                          0x0000f24d   Thumb Code   472  amx805_device.o(.text.amx8x5_time_set)
+    amx8x5_wait_por_ready                    0x0000f425   Thumb Code    86  main.o(.text.amx8x5_wait_por_ready)
+    debug_printf_enable                      0x0000f745   Thumb Code    50  uart_debug.o(.text.debug_printf_enable)
+    i2c_callback                             0x0000fb99   Thumb Code   294  iom_i2c.o(.text.i2c_callback)
+    iom_dma_configure                        0x0000fcc1   Thumb Code    64  iom_dma.o(.text.iom_dma_configure)
+    iom_dma_enable                           0x0000fd01   Thumb Code   104  iom_dma.o(.text.iom_dma_enable)
+    iom_dma_i2c_configure                    0x0000fd69   Thumb Code   260  iom_dma.o(.text.iom_dma_i2c_configure)
+    iom_dma_int_enable                       0x0000fe6d   Thumb Code    78  iom_dma.o(.text.iom_dma_int_enable)
+    iom_dma_spi_configure                    0x0000febd   Thumb Code   178  iom_dma.o(.text.iom_dma_spi_configure)
+    iom_dma_start                            0x0000ff71   Thumb Code   796  iom_dma.o(.text.iom_dma_start)
+    iom_gpio_config                          0x000104e9   Thumb Code   164  iom_i2c.o(.text.iom_gpio_config)
+    iom_i2c_dma_pop_tail                     0x0001058d   Thumb Code   292  iom_dma.o(.text.iom_i2c_dma_pop_tail)
+    iom_i2c_init                             0x000106b1   Thumb Code   138  iom_i2c.o(.text.iom_i2c_init)
+    iom_i2c_read                             0x0001073d   Thumb Code   260  iom_i2c.o(.text.iom_i2c_read)
+    iom_i2c_write                            0x00010841   Thumb Code   258  iom_i2c.o(.text.iom_i2c_write)
+    itm_printf_enable                        0x00010945   Thumb Code    68  uart_debug.o(.text.itm_printf_enable)
+    low_power_init                           0x00010989   Thumb Code    12  main.o(.text.low_power_init)
+    main                                     0x00010995   Thumb Code   236  main.o(.text.main)
+    mthToIndex                               0x00010a81   Thumb Code    74  main.o(.text.mthToIndex)
+    sleep_loop                               0x000110f5   Thumb Code   528  main.o(.text.sleep_loop)
+    toVal                                    0x00011305   Thumb Code    74  main.o(.text.toVal)
+    uart_printf_enable                       0x000114b5   Thumb Code   110  uart_debug.o(.text.uart_printf_enable)
+    uart_string_print                        0x00011525   Thumb Code    74  uart_debug.o(.text.uart_string_print)
+    __aeabi_d2f                              0x0001185d   Thumb Code     0  d2f.o(x$fpl$d2f)
+    _d2f                                     0x0001185d   Thumb Code    98  d2f.o(x$fpl$d2f)
+    __fpl_dnaninf                            0x000118bf   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    _fp_init                                 0x0001195b   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x00011973   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00011973   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fpl_fretinf                            0x00011975   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    __I$use$fp                               0x0001197e   Number         0  usenofp.o(x$fpl$usenofp)
+    am_cattr                                 0x0001198c   Data         256  am_util_string.o(.rodata.am_cattr)
+    am_hal_cachectrl_defaults                0x00011a8c   Data           3  am_hal_cachectrl.o(.rodata.am_hal_cachectrl_defaults)
+    am_hal_pwrctrl_peripheral_control        0x00011a90   Data         180  am_hal_pwrctrl.o(.rodata.am_hal_pwrctrl_peripheral_control)
+    g_AM_HAL_GPIO_DISABLE                    0x00011b44   Data           4  am_hal_gpio.o(.rodata.g_AM_HAL_GPIO_DISABLE)
+    g_GPIO_COM_UART_RX                       0x00011b48   Data           4  uart_debug.o(.rodata.g_GPIO_COM_UART_RX)
+    g_GPIO_COM_UART_TX                       0x00011b4c   Data           4  uart_debug.o(.rodata.g_GPIO_COM_UART_TX)
+    g_GPIO_ITM_SWO                           0x00011b50   Data           4  uart_debug.o(.rodata.g_GPIO_ITM_SWO)
+    g_GPIO_RTC_CLKOUT                        0x00011b54   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_CLKOUT)
+    g_GPIO_RTC_EXTI                          0x00011b58   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_EXTI)
+    g_GPIO_RTC_EXTR                          0x00011b5c   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_EXTR)
+    g_GPIO_RTC_FOUT                          0x00011b60   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_FOUT)
+    g_GPIO_RTC_PSW                           0x00011b64   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_PSW)
+    g_GPIO_RTC_RST                           0x00011b68   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_RST)
+    g_GPIO_RTC_SCL                           0x00011b6c   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_SCL)
+    g_GPIO_RTC_SDA                           0x00011b70   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_SDA)
+    g_GPIO_RTC_TIRQ                          0x00011b74   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_TIRQ)
+    g_GPIO_RTC_WDI                           0x00011b78   Data           4  iom_i2c.o(.rodata.g_GPIO_RTC_WDI)
+    g_am_hal_flash                           0x00011b7c   Data          96  am_hal_flash.o(.rodata.g_am_hal_flash)
+    Region$$Table$$Base                      0x00011ec8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00011ee8   Number         0  anon$$obj.o(Region$$Table)
     g_ui32HALflags                           0x10000000   Data           4  am_hal_global.o(.data)
     g_pcMonth                                0x10000004   Data          48  main.o(.data.g_pcMonth)
     g_pcWeekday                              0x10000034   Data          28  main.o(.data.g_pcWeekday)
@@ -3390,9 +3392,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000c135
 
-  Load Region LR_IROM1 (Base: 0x0000c000, Size: 0x00005ef8, Max: 0x000f4000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x0000c000, Size: 0x00005f48, Max: 0x000f4000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x0000c000, Load base: 0x0000c000, Size: 0x00005e94, Max: 0x000f4000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x0000c000, Load base: 0x0000c000, Size: 0x00005ee8, Max: 0x000f4000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3468,222 +3470,225 @@ Memory Map of the image
     0x0000c95c   0x0000c95c   0x00000050   Code   RO         1174    .text.am_hal_flash_delay  am_hal_flash.o
     0x0000c9ac   0x0000c9ac   0x00000074   Code   RO         1178    .text.am_hal_flash_delay_status_check  am_hal_flash.o
     0x0000ca20   0x0000ca20   0x00000018   Code   RO         1222    .text.am_hal_flash_load_ui32  am_hal_flash.o
-    0x0000ca38   0x0000ca38   0x0000003c   Code   RO         1224    .text.am_hal_flash_store_ui32  am_hal_flash.o
-    0x0000ca74   0x0000ca74   0x000003c4   Code   RO          429    .text.am_hal_gpio_pinconfig  am_hal_gpio.o
-    0x0000ce38   0x0000ce38   0x000000c4   Code   RO          437    .text.am_hal_gpio_state_read  am_hal_gpio.o
-    0x0000cefc   0x0000cefc   0x000000d4   Code   RO          439    .text.am_hal_gpio_state_write  am_hal_gpio.o
-    0x0000cfd0   0x0000cfd0   0x00000008   Code   RO          487    .text.am_hal_interrupt_master_disable  am_hal_interrupt.o
-    0x0000cfd8   0x0000cfd8   0x00000008   Code   RO          485    .text.am_hal_interrupt_master_enable  am_hal_interrupt.o
-    0x0000cfe0   0x0000cfe0   0x00000006   Code   RO          489    .text.am_hal_interrupt_master_set  am_hal_interrupt.o
-    0x0000cfe6   0x0000cfe6   0x00000002   PAD
-    0x0000cfe8   0x0000cfe8   0x00000018   Code   RO          510    .text.am_hal_iom_CQDisable  am_hal_iom.o
-    0x0000d000   0x0000d000   0x00000044   Code   RO          508    .text.am_hal_iom_CQEnable  am_hal_iom.o
-    0x0000d044   0x0000d044   0x0000009e   Code   RO          518    .text.am_hal_iom_initialize  am_hal_iom.o
-    0x0000d0e2   0x0000d0e2   0x00000002   PAD
-    0x0000d0e4   0x0000d0e4   0x0000036a   Code   RO          540    .text.am_hal_iom_power_ctrl  am_hal_iom.o
-    0x0000d44e   0x0000d44e   0x00000002   PAD
-    0x0000d450   0x0000d450   0x00000066   Code   RO          631    .text.am_hal_itm_enable  am_hal_itm.o
-    0x0000d4b6   0x0000d4b6   0x00000002   PAD
-    0x0000d4b8   0x0000d4b8   0x00000040   Code   RO          653    .text.am_hal_itm_print  am_hal_itm.o
-    0x0000d4f8   0x0000d4f8   0x0000002c   Code   RO          647    .text.am_hal_itm_stimulus_reg_byte_write  am_hal_itm.o
-    0x0000d524   0x0000d524   0x00000052   Code   RO          773    .text.am_hal_pwrctrl_blebuck_trim  am_hal_pwrctrl.o
-    0x0000d576   0x0000d576   0x00000002   PAD
-    0x0000d578   0x0000d578   0x0000011a   Code   RO          769    .text.am_hal_pwrctrl_low_power_init  am_hal_pwrctrl.o
-    0x0000d692   0x0000d692   0x00000002   PAD
-    0x0000d694   0x0000d694   0x000000ba   Code   RO          757    .text.am_hal_pwrctrl_periph_disable  am_hal_pwrctrl.o
-    0x0000d74e   0x0000d74e   0x00000002   PAD
-    0x0000d750   0x0000d750   0x000000e2   Code   RO          755    .text.am_hal_pwrctrl_periph_enable  am_hal_pwrctrl.o
-    0x0000d832   0x0000d832   0x00000002   PAD
-    0x0000d834   0x0000d834   0x0000002e   Code   RO         1525    .text.am_hal_queue_init  am_hal_queue.o
-    0x0000d862   0x0000d862   0x00000002   PAD
-    0x0000d864   0x0000d864   0x000000a2   Code   RO         1527    .text.am_hal_queue_item_add  am_hal_queue.o
-    0x0000d906   0x0000d906   0x00000002   PAD
-    0x0000d908   0x0000d908   0x0000009e   Code   RO         1529    .text.am_hal_queue_item_get  am_hal_queue.o
-    0x0000d9a6   0x0000d9a6   0x00000002   PAD
-    0x0000d9a8   0x0000d9a8   0x00000012   Code   RO          811    .text.am_hal_rtc_osc_disable  am_hal_rtc.o
-    0x0000d9ba   0x0000d9ba   0x00000002   PAD
-    0x0000d9bc   0x0000d9bc   0x000000fc   Code   RO         1055    .text.am_hal_tpiu_enable  am_hal_tpiu.o
-    0x0000dab8   0x0000dab8   0x000001d0   Code   RO         1074    .text.am_hal_uart_configure  am_hal_uart.o
-    0x0000dc88   0x0000dc88   0x0000009c   Code   RO         1066    .text.am_hal_uart_initialize  am_hal_uart.o
-    0x0000dd24   0x0000dd24   0x0000005a   Code   RO         1072    .text.am_hal_uart_interrupt_clear  am_hal_uart.o
-    0x0000dd7e   0x0000dd7e   0x00000002   PAD
-    0x0000dd80   0x0000dd80   0x0000005e   Code   RO         1106    .text.am_hal_uart_interrupt_disable  am_hal_uart.o
-    0x0000ddde   0x0000ddde   0x00000002   PAD
-    0x0000dde0   0x0000dde0   0x0000005e   Code   RO         1104    .text.am_hal_uart_interrupt_enable  am_hal_uart.o
-    0x0000de3e   0x0000de3e   0x00000002   PAD
-    0x0000de40   0x0000de40   0x000001fa   Code   RO         1070    .text.am_hal_uart_power_control  am_hal_uart.o
-    0x0000e03a   0x0000e03a   0x00000002   PAD
-    0x0000e03c   0x0000e03c   0x00000060   Code   RO         1080    .text.am_hal_uart_transfer  am_hal_uart.o
-    0x0000e09c   0x0000e09c   0x0000005c   Code   RO           76    .text.am_iomaster0_isr  iom_dma.o
-    0x0000e0f8   0x0000e0f8   0x0000006e   Code   RO           78    .text.am_iomaster1_isr  iom_dma.o
-    0x0000e166   0x0000e166   0x00000002   PAD
-    0x0000e168   0x0000e168   0x0000005e   Code   RO           80    .text.am_iomaster2_isr  iom_dma.o
-    0x0000e1c6   0x0000e1c6   0x00000002   PAD
-    0x0000e1c8   0x0000e1c8   0x0000005e   Code   RO           82    .text.am_iomaster3_isr  iom_dma.o
-    0x0000e226   0x0000e226   0x00000002   PAD
-    0x0000e228   0x0000e228   0x0000005e   Code   RO           84    .text.am_iomaster4_isr  iom_dma.o
-    0x0000e286   0x0000e286   0x00000002   PAD
-    0x0000e288   0x0000e288   0x0000005e   Code   RO           86    .text.am_iomaster5_isr  iom_dma.o
-    0x0000e2e6   0x0000e2e6   0x00000002   PAD
-    0x0000e2e8   0x0000e2e8   0x00000030   Code   RO          213    .text.am_util_delay_ms  am_util_delay.o
-    0x0000e318   0x0000e318   0x00000030   Code   RO          215    .text.am_util_delay_us  am_util_delay.o
-    0x0000e348   0x0000e348   0x0000005c   Code   RO          252    .text.am_util_stdio_printf  am_util_stdio.o
-    0x0000e3a4   0x0000e3a4   0x00000014   Code   RO          224    .text.am_util_stdio_printf_init  am_util_stdio.o
-    0x0000e3b8   0x0000e3b8   0x00000654   Code   RO          230    .text.am_util_stdio_vsprintf  am_util_stdio.o
-    0x0000ea0c   0x0000ea0c   0x000000b6   Code   RO          279    .text.am_util_string_strnicmp  am_util_string.o
-    0x0000eac2   0x0000eac2   0x00000002   PAD
-    0x0000eac4   0x0000eac4   0x000001ce   Code   RO          299    .text.am_util_time_computeDayofWeek  am_util_time.o
-    0x0000ec92   0x0000ec92   0x00000002   PAD
-    0x0000ec94   0x0000ec94   0x00000028   Code   RO            8    .text.amx8x5_ext1_gen  main.o
-    0x0000ecbc   0x0000ecbc   0x0000005a   Code   RO           12    .text.amx8x5_ext_reset  main.o
-    0x0000ed16   0x0000ed16   0x00000002   PAD
-    0x0000ed18   0x0000ed18   0x00000098   Code   RO           10    .text.amx8x5_init   main.o
-    0x0000edb0   0x0000edb0   0x0000003e   Code   RO           14    .text.amx8x5_int_clear  main.o
-    0x0000edee   0x0000edee   0x00000002   PAD
-    0x0000edf0   0x0000edf0   0x00000058   Code   RO          155    .text.amx8x5_reg_block_read  amx805_device.o
-    0x0000ee48   0x0000ee48   0x00000050   Code   RO          157    .text.amx8x5_reg_block_write  amx805_device.o
-    0x0000ee98   0x0000ee98   0x00000052   Code   RO          147    .text.amx8x5_reg_clear  amx805_device.o
-    0x0000eeea   0x0000eeea   0x00000002   PAD
-    0x0000eeec   0x0000eeec   0x0000005e   Code   RO          149    .text.amx8x5_reg_read  amx805_device.o
-    0x0000ef4a   0x0000ef4a   0x00000002   PAD
-    0x0000ef4c   0x0000ef4c   0x00000052   Code   RO          153    .text.amx8x5_reg_set  amx805_device.o
-    0x0000ef9e   0x0000ef9e   0x00000002   PAD
-    0x0000efa0   0x0000efa0   0x00000038   Code   RO          151    .text.amx8x5_reg_write  amx805_device.o
-    0x0000efd8   0x0000efd8   0x0000002e   Code   RO          159    .text.amx8x5_reset  amx805_device.o
-    0x0000f006   0x0000f006   0x00000002   PAD
-    0x0000f008   0x0000f008   0x0000014a   Code   RO          179    .text.amx8x5_sleep_set  amx805_device.o
-    0x0000f152   0x0000f152   0x00000002   PAD
-    0x0000f154   0x0000f154   0x000000fe   Code   RO          161    .text.amx8x5_time_get  amx805_device.o
-    0x0000f252   0x0000f252   0x00000002   PAD
-    0x0000f254   0x0000f254   0x000001d8   Code   RO          165    .text.amx8x5_time_set  amx805_device.o
-    0x0000f42c   0x0000f42c   0x00000056   Code   RO           16    .text.amx8x5_wait_por_ready  main.o
-    0x0000f482   0x0000f482   0x00000002   PAD
-    0x0000f484   0x0000f484   0x0000001e   Code   RO          163    .text.bcd_to_dec    amx805_device.o
-    0x0000f4a2   0x0000f4a2   0x00000002   PAD
-    0x0000f4a4   0x0000f4a4   0x000000fe   Code   RO         1078    .text.buffer_configure  am_hal_uart.o
-    0x0000f5a2   0x0000f5a2   0x00000002   PAD
-    0x0000f5a4   0x0000f5a4   0x00000054   Code   RO           96    .text.compute_freq  iom_dma.o
-    0x0000f5f8   0x0000f5f8   0x00000154   Code   RO         1076    .text.config_baudrate  am_hal_uart.o
-    0x0000f74c   0x0000f74c   0x00000032   Code   RO           42    .text.debug_printf_enable  uart_debug.o
-    0x0000f77e   0x0000f77e   0x00000002   PAD
-    0x0000f780   0x0000f780   0x0000002e   Code   RO          167    .text.dec_to_bcd    amx805_device.o
-    0x0000f7ae   0x0000f7ae   0x00000002   PAD
-    0x0000f7b0   0x0000f7b0   0x000000a6   Code   RO          232    .text.decstr_to_int  am_util_stdio.o
-    0x0000f856   0x0000f856   0x00000002   PAD
-    0x0000f858   0x0000f858   0x00000118   Code   RO          262    .text.divu64_10     am_util_stdio.o
-    0x0000f970   0x0000f970   0x00000230   Code   RO          248    .text.ftoa          am_util_stdio.o
-    0x0000fba0   0x0000fba0   0x00000126   Code   RO          112    .text.i2c_callback  iom_i2c.o
-    0x0000fcc6   0x0000fcc6   0x00000002   PAD
-    0x0000fcc8   0x0000fcc8   0x00000040   Code   RO           66    .text.iom_dma_configure  iom_dma.o
-    0x0000fd08   0x0000fd08   0x00000068   Code   RO           68    .text.iom_dma_enable  iom_dma.o
-    0x0000fd70   0x0000fd70   0x00000104   Code   RO           64    .text.iom_dma_i2c_configure  iom_dma.o
-    0x0000fe74   0x0000fe74   0x0000004e   Code   RO           88    .text.iom_dma_int_enable  iom_dma.o
-    0x0000fec2   0x0000fec2   0x00000002   PAD
-    0x0000fec4   0x0000fec4   0x000000b2   Code   RO           60    .text.iom_dma_spi_configure  iom_dma.o
-    0x0000ff76   0x0000ff76   0x00000002   PAD
-    0x0000ff78   0x0000ff78   0x0000031c   Code   RO           72    .text.iom_dma_start  iom_dma.o
-    0x00010294   0x00010294   0x0000025a   Code   RO           62    .text.iom_get_interface_clock_cfg  iom_dma.o
-    0x000104ee   0x000104ee   0x00000002   PAD
-    0x000104f0   0x000104f0   0x000000a4   Code   RO          114    .text.iom_gpio_config  iom_i2c.o
-    0x00010594   0x00010594   0x00000124   Code   RO           74    .text.iom_i2c_dma_pop_tail  iom_dma.o
-    0x000106b8   0x000106b8   0x0000008a   Code   RO          120    .text.iom_i2c_init  iom_i2c.o
-    0x00010742   0x00010742   0x00000002   PAD
-    0x00010744   0x00010744   0x00000104   Code   RO          118    .text.iom_i2c_read  iom_i2c.o
-    0x00010848   0x00010848   0x00000102   Code   RO          116    .text.iom_i2c_write  iom_i2c.o
-    0x0001094a   0x0001094a   0x00000002   PAD
-    0x0001094c   0x0001094c   0x00000044   Code   RO           34    .text.itm_printf_enable  uart_debug.o
-    0x00010990   0x00010990   0x0000000c   Code   RO            2    .text.low_power_init  main.o
-    0x0001099c   0x0001099c   0x0000009c   Code   RO           20    .text.main          main.o
-    0x00010a38   0x00010a38   0x0000004a   Code   RO            6    .text.mthToIndex    main.o
-    0x00010a82   0x00010a82   0x00000002   PAD
-    0x00010a84   0x00010a84   0x0000003e   Code   RO          238    .text.ndigits_in_hex  am_util_stdio.o
-    0x00010ac2   0x00010ac2   0x00000002   PAD
-    0x00010ac4   0x00010ac4   0x00000030   Code   RO          246    .text.ndigits_in_i64  am_util_stdio.o
-    0x00010af4   0x00010af4   0x0000003c   Code   RO          242    .text.ndigits_in_u64  am_util_stdio.o
-    0x00010b30   0x00010b30   0x00000028   Code   RO           98    .text.onebit        iom_dma.o
-    0x00010b58   0x00010b58   0x00000050   Code   RO          236    .text.padbuffer     am_util_stdio.o
-    0x00010ba8   0x00010ba8   0x00000022   Code   RO          431    .text.pincfg_equ    am_hal_gpio.o
-    0x00010bca   0x00010bca   0x00000002   PAD
-    0x00010bcc   0x00010bcc   0x000000de   Code   RO          759    .text.pwrctrl_periph_disable_msk_check  am_hal_pwrctrl.o
-    0x00010caa   0x00010caa   0x00000002   PAD
-    0x00010cac   0x00010cac   0x000000d4   Code   RO         1116    .text.read_nonblocking  am_hal_uart.o
-    0x00010d80   0x00010d80   0x000000ce   Code   RO         1084    .text.read_timeout  am_hal_uart.o
-    0x00010e4e   0x00010e4e   0x00000002   PAD
-    0x00010e50   0x00010e50   0x0000004c   Code   RO         1100    .text.rx_queue_update  am_hal_uart.o
-    0x00010e9c   0x00010e9c   0x00000066   Code   RO          318    .text.set_LPMMODE   am_hal_cachectrl.o
-    0x00010f02   0x00010f02   0x00000002   PAD
-    0x00010f04   0x00010f04   0x00000066   Code   RO          322    .text.set_RDWAIT    am_hal_cachectrl.o
-    0x00010f6a   0x00010f6a   0x00000002   PAD
-    0x00010f6c   0x00010f6c   0x00000066   Code   RO          320    .text.set_SEDELAY   am_hal_cachectrl.o
-    0x00010fd2   0x00010fd2   0x00000002   PAD
-    0x00010fd4   0x00010fd4   0x000000a0   Code   RO          771    .text.simobuck_updates  am_hal_pwrctrl.o
-    0x00011074   0x00011074   0x00000036   Code   RO          234    .text.simple_strlen  am_util_stdio.o
-    0x000110aa   0x000110aa   0x00000002   PAD
-    0x000110ac   0x000110ac   0x00000210   Code   RO           18    .text.sleep_loop    main.o
-    0x000112bc   0x000112bc   0x0000004a   Code   RO            4    .text.toVal         main.o
-    0x00011306   0x00011306   0x00000002   PAD
-    0x00011308   0x00011308   0x0000006e   Code   RO         1102    .text.tx_queue_update  am_hal_uart.o
-    0x00011376   0x00011376   0x00000002   PAD
-    0x00011378   0x00011378   0x00000086   Code   RO         1092    .text.uart_fifo_read  am_hal_uart.o
-    0x000113fe   0x000113fe   0x00000002   PAD
-    0x00011400   0x00011400   0x0000006c   Code   RO         1096    .text.uart_fifo_write  am_hal_uart.o
-    0x0001146c   0x0001146c   0x0000006e   Code   RO           38    .text.uart_printf_enable  uart_debug.o
-    0x000114da   0x000114da   0x00000002   PAD
-    0x000114dc   0x000114dc   0x0000004a   Code   RO           36    .text.uart_string_print  uart_debug.o
-    0x00011526   0x00011526   0x00000002   PAD
-    0x00011528   0x00011528   0x000000c0   Code   RO          240    .text.uint64_to_hexstr  am_util_stdio.o
-    0x000115e8   0x000115e8   0x00000088   Code   RO          244    .text.uint64_to_str  am_util_stdio.o
-    0x00011670   0x00011670   0x000000d2   Code   RO         1114    .text.write_nonblocking  am_hal_uart.o
-    0x00011742   0x00011742   0x00000002   PAD
-    0x00011744   0x00011744   0x000000ce   Code   RO         1082    .text.write_timeout  am_hal_uart.o
-    0x00011812   0x00011812   0x00000002   PAD
-    0x00011814   0x00011814   0x00000062   Code   RO         1556    x$fpl$d2f           fz_wm.l(d2f.o)
-    0x00011876   0x00011876   0x0000009c   Code   RO         1561    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
-    0x00011912   0x00011912   0x0000001a   Code   RO         1652    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x0001192c   0x0001192c   0x0000000a   Code   RO         1563    x$fpl$fretinf       fz_wm.l(fretinf.o)
-    0x00011936   0x00011936   0x00000000   Code   RO         1565    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x00011936   0x00011936   0x00000100   Data   RO          291    .rodata.am_cattr    am_util_string.o
-    0x00011a36   0x00011a36   0x00000003   Data   RO          326    .rodata.am_hal_cachectrl_defaults  am_hal_cachectrl.o
-    0x00011a39   0x00011a39   0x00000003   PAD
-    0x00011a3c   0x00011a3c   0x000000b4   Data   RO          776    .rodata.am_hal_pwrctrl_peripheral_control  am_hal_pwrctrl.o
-    0x00011af0   0x00011af0   0x00000004   Data   RO          459    .rodata.g_AM_HAL_GPIO_DISABLE  am_hal_gpio.o
-    0x00011af4   0x00011af4   0x00000004   Data   RO           48    .rodata.g_GPIO_COM_UART_RX  uart_debug.o
-    0x00011af8   0x00011af8   0x00000004   Data   RO           47    .rodata.g_GPIO_COM_UART_TX  uart_debug.o
-    0x00011afc   0x00011afc   0x00000004   Data   RO           46    .rodata.g_GPIO_ITM_SWO  uart_debug.o
-    0x00011b00   0x00011b00   0x00000004   Data   RO          132    .rodata.g_GPIO_RTC_CLKOUT  iom_i2c.o
-    0x00011b04   0x00011b04   0x00000004   Data   RO          133    .rodata.g_GPIO_RTC_EXTI  iom_i2c.o
-    0x00011b08   0x00011b08   0x00000004   Data   RO          131    .rodata.g_GPIO_RTC_EXTR  iom_i2c.o
-    0x00011b0c   0x00011b0c   0x00000004   Data   RO          130    .rodata.g_GPIO_RTC_FOUT  iom_i2c.o
-    0x00011b10   0x00011b10   0x00000004   Data   RO          134    .rodata.g_GPIO_RTC_PSW  iom_i2c.o
-    0x00011b14   0x00011b14   0x00000004   Data   RO          136    .rodata.g_GPIO_RTC_RST  iom_i2c.o
-    0x00011b18   0x00011b18   0x00000004   Data   RO          129    .rodata.g_GPIO_RTC_SCL  iom_i2c.o
-    0x00011b1c   0x00011b1c   0x00000004   Data   RO          128    .rodata.g_GPIO_RTC_SDA  iom_i2c.o
-    0x00011b20   0x00011b20   0x00000004   Data   RO          137    .rodata.g_GPIO_RTC_TIRQ  iom_i2c.o
-    0x00011b24   0x00011b24   0x00000004   Data   RO          135    .rodata.g_GPIO_RTC_WDI  iom_i2c.o
-    0x00011b28   0x00011b28   0x00000060   Data   RO         1226    .rodata.g_am_hal_flash  am_hal_flash.o
-    0x00011b88   0x00011b88   0x00000030   Data   RO          301    .rodata.g_iDaysPerMonth  am_util_time.o
-    0x00011bb8   0x00011bb8   0x00000030   Data   RO          302    .rodata.g_iMonthOffsets  am_util_time.o
-    0x00011be8   0x00011be8   0x00000028   Data   RO           52    .rodata.g_sBspUartConfig  uart_debug.o
-    0x00011c10   0x00011c10   0x00000032   Data   RO          472    .rodata.g_ui8Bit76Capabilities  am_hal_gpio.o
-    0x00011c42   0x00011c42   0x00000032   Data   RO          473    .rodata.g_ui8Inpen  am_hal_gpio.o
-    0x00011c74   0x00011c74   0x000000c8   Data   RO          475    .rodata.g_ui8NCEtable  am_hal_gpio.o
-    0x00011d3c   0x00011d3c   0x00000032   Data   RO          474    .rodata.g_ui8nCEpins  am_hal_gpio.o
-    0x00011d6e   0x00011d6e   0x00000106   Data   RO           22    .rodata.str1.1      main.o
-    0x00011e74   0x00011e74   0x00000020   Data   RO         1727    Region$$Table       anon$$obj.o
+    0x0000ca38   0x0000ca38   0x00000032   Code   RO         1224    .text.am_hal_flash_store_ui32  am_hal_flash.o
+    0x0000ca6a   0x0000ca6a   0x00000002   PAD
+    0x0000ca6c   0x0000ca6c   0x000003c4   Code   RO          429    .text.am_hal_gpio_pinconfig  am_hal_gpio.o
+    0x0000ce30   0x0000ce30   0x000000c4   Code   RO          437    .text.am_hal_gpio_state_read  am_hal_gpio.o
+    0x0000cef4   0x0000cef4   0x000000d4   Code   RO          439    .text.am_hal_gpio_state_write  am_hal_gpio.o
+    0x0000cfc8   0x0000cfc8   0x00000008   Code   RO          487    .text.am_hal_interrupt_master_disable  am_hal_interrupt.o
+    0x0000cfd0   0x0000cfd0   0x00000008   Code   RO          485    .text.am_hal_interrupt_master_enable  am_hal_interrupt.o
+    0x0000cfd8   0x0000cfd8   0x00000006   Code   RO          489    .text.am_hal_interrupt_master_set  am_hal_interrupt.o
+    0x0000cfde   0x0000cfde   0x00000002   PAD
+    0x0000cfe0   0x0000cfe0   0x00000018   Code   RO          510    .text.am_hal_iom_CQDisable  am_hal_iom.o
+    0x0000cff8   0x0000cff8   0x00000044   Code   RO          508    .text.am_hal_iom_CQEnable  am_hal_iom.o
+    0x0000d03c   0x0000d03c   0x0000009e   Code   RO          518    .text.am_hal_iom_initialize  am_hal_iom.o
+    0x0000d0da   0x0000d0da   0x00000002   PAD
+    0x0000d0dc   0x0000d0dc   0x0000036a   Code   RO          540    .text.am_hal_iom_power_ctrl  am_hal_iom.o
+    0x0000d446   0x0000d446   0x00000002   PAD
+    0x0000d448   0x0000d448   0x00000066   Code   RO          631    .text.am_hal_itm_enable  am_hal_itm.o
+    0x0000d4ae   0x0000d4ae   0x00000002   PAD
+    0x0000d4b0   0x0000d4b0   0x00000040   Code   RO          653    .text.am_hal_itm_print  am_hal_itm.o
+    0x0000d4f0   0x0000d4f0   0x0000002c   Code   RO          647    .text.am_hal_itm_stimulus_reg_byte_write  am_hal_itm.o
+    0x0000d51c   0x0000d51c   0x00000052   Code   RO          773    .text.am_hal_pwrctrl_blebuck_trim  am_hal_pwrctrl.o
+    0x0000d56e   0x0000d56e   0x00000002   PAD
+    0x0000d570   0x0000d570   0x0000011a   Code   RO          769    .text.am_hal_pwrctrl_low_power_init  am_hal_pwrctrl.o
+    0x0000d68a   0x0000d68a   0x00000002   PAD
+    0x0000d68c   0x0000d68c   0x000000ba   Code   RO          757    .text.am_hal_pwrctrl_periph_disable  am_hal_pwrctrl.o
+    0x0000d746   0x0000d746   0x00000002   PAD
+    0x0000d748   0x0000d748   0x000000e2   Code   RO          755    .text.am_hal_pwrctrl_periph_enable  am_hal_pwrctrl.o
+    0x0000d82a   0x0000d82a   0x00000002   PAD
+    0x0000d82c   0x0000d82c   0x0000002e   Code   RO         1525    .text.am_hal_queue_init  am_hal_queue.o
+    0x0000d85a   0x0000d85a   0x00000002   PAD
+    0x0000d85c   0x0000d85c   0x000000a2   Code   RO         1527    .text.am_hal_queue_item_add  am_hal_queue.o
+    0x0000d8fe   0x0000d8fe   0x00000002   PAD
+    0x0000d900   0x0000d900   0x0000009e   Code   RO         1529    .text.am_hal_queue_item_get  am_hal_queue.o
+    0x0000d99e   0x0000d99e   0x00000002   PAD
+    0x0000d9a0   0x0000d9a0   0x00000012   Code   RO          811    .text.am_hal_rtc_osc_disable  am_hal_rtc.o
+    0x0000d9b2   0x0000d9b2   0x00000002   PAD
+    0x0000d9b4   0x0000d9b4   0x000000fc   Code   RO         1055    .text.am_hal_tpiu_enable  am_hal_tpiu.o
+    0x0000dab0   0x0000dab0   0x000001d0   Code   RO         1074    .text.am_hal_uart_configure  am_hal_uart.o
+    0x0000dc80   0x0000dc80   0x0000009c   Code   RO         1066    .text.am_hal_uart_initialize  am_hal_uart.o
+    0x0000dd1c   0x0000dd1c   0x0000005a   Code   RO         1072    .text.am_hal_uart_interrupt_clear  am_hal_uart.o
+    0x0000dd76   0x0000dd76   0x00000002   PAD
+    0x0000dd78   0x0000dd78   0x0000005e   Code   RO         1106    .text.am_hal_uart_interrupt_disable  am_hal_uart.o
+    0x0000ddd6   0x0000ddd6   0x00000002   PAD
+    0x0000ddd8   0x0000ddd8   0x0000005e   Code   RO         1104    .text.am_hal_uart_interrupt_enable  am_hal_uart.o
+    0x0000de36   0x0000de36   0x00000002   PAD
+    0x0000de38   0x0000de38   0x000001fa   Code   RO         1070    .text.am_hal_uart_power_control  am_hal_uart.o
+    0x0000e032   0x0000e032   0x00000002   PAD
+    0x0000e034   0x0000e034   0x00000060   Code   RO         1080    .text.am_hal_uart_transfer  am_hal_uart.o
+    0x0000e094   0x0000e094   0x0000005c   Code   RO           76    .text.am_iomaster0_isr  iom_dma.o
+    0x0000e0f0   0x0000e0f0   0x0000006e   Code   RO           78    .text.am_iomaster1_isr  iom_dma.o
+    0x0000e15e   0x0000e15e   0x00000002   PAD
+    0x0000e160   0x0000e160   0x0000005e   Code   RO           80    .text.am_iomaster2_isr  iom_dma.o
+    0x0000e1be   0x0000e1be   0x00000002   PAD
+    0x0000e1c0   0x0000e1c0   0x0000005e   Code   RO           82    .text.am_iomaster3_isr  iom_dma.o
+    0x0000e21e   0x0000e21e   0x00000002   PAD
+    0x0000e220   0x0000e220   0x0000005e   Code   RO           84    .text.am_iomaster4_isr  iom_dma.o
+    0x0000e27e   0x0000e27e   0x00000002   PAD
+    0x0000e280   0x0000e280   0x0000005e   Code   RO           86    .text.am_iomaster5_isr  iom_dma.o
+    0x0000e2de   0x0000e2de   0x00000002   PAD
+    0x0000e2e0   0x0000e2e0   0x00000030   Code   RO          213    .text.am_util_delay_ms  am_util_delay.o
+    0x0000e310   0x0000e310   0x00000030   Code   RO          215    .text.am_util_delay_us  am_util_delay.o
+    0x0000e340   0x0000e340   0x0000005c   Code   RO          252    .text.am_util_stdio_printf  am_util_stdio.o
+    0x0000e39c   0x0000e39c   0x00000014   Code   RO          224    .text.am_util_stdio_printf_init  am_util_stdio.o
+    0x0000e3b0   0x0000e3b0   0x00000654   Code   RO          230    .text.am_util_stdio_vsprintf  am_util_stdio.o
+    0x0000ea04   0x0000ea04   0x000000b6   Code   RO          279    .text.am_util_string_strnicmp  am_util_string.o
+    0x0000eaba   0x0000eaba   0x00000002   PAD
+    0x0000eabc   0x0000eabc   0x000001ce   Code   RO          299    .text.am_util_time_computeDayofWeek  am_util_time.o
+    0x0000ec8a   0x0000ec8a   0x00000002   PAD
+    0x0000ec8c   0x0000ec8c   0x00000028   Code   RO            8    .text.amx8x5_ext1_gen  main.o
+    0x0000ecb4   0x0000ecb4   0x0000005a   Code   RO           12    .text.amx8x5_ext_reset  main.o
+    0x0000ed0e   0x0000ed0e   0x00000002   PAD
+    0x0000ed10   0x0000ed10   0x00000098   Code   RO           10    .text.amx8x5_init   main.o
+    0x0000eda8   0x0000eda8   0x0000003e   Code   RO           14    .text.amx8x5_int_clear  main.o
+    0x0000ede6   0x0000ede6   0x00000002   PAD
+    0x0000ede8   0x0000ede8   0x00000058   Code   RO          155    .text.amx8x5_reg_block_read  amx805_device.o
+    0x0000ee40   0x0000ee40   0x00000050   Code   RO          157    .text.amx8x5_reg_block_write  amx805_device.o
+    0x0000ee90   0x0000ee90   0x00000052   Code   RO          147    .text.amx8x5_reg_clear  amx805_device.o
+    0x0000eee2   0x0000eee2   0x00000002   PAD
+    0x0000eee4   0x0000eee4   0x0000005e   Code   RO          149    .text.amx8x5_reg_read  amx805_device.o
+    0x0000ef42   0x0000ef42   0x00000002   PAD
+    0x0000ef44   0x0000ef44   0x00000052   Code   RO          153    .text.amx8x5_reg_set  amx805_device.o
+    0x0000ef96   0x0000ef96   0x00000002   PAD
+    0x0000ef98   0x0000ef98   0x00000038   Code   RO          151    .text.amx8x5_reg_write  amx805_device.o
+    0x0000efd0   0x0000efd0   0x0000002e   Code   RO          159    .text.amx8x5_reset  amx805_device.o
+    0x0000effe   0x0000effe   0x00000002   PAD
+    0x0000f000   0x0000f000   0x0000014a   Code   RO          179    .text.amx8x5_sleep_set  amx805_device.o
+    0x0000f14a   0x0000f14a   0x00000002   PAD
+    0x0000f14c   0x0000f14c   0x000000fe   Code   RO          161    .text.amx8x5_time_get  amx805_device.o
+    0x0000f24a   0x0000f24a   0x00000002   PAD
+    0x0000f24c   0x0000f24c   0x000001d8   Code   RO          165    .text.amx8x5_time_set  amx805_device.o
+    0x0000f424   0x0000f424   0x00000056   Code   RO           16    .text.amx8x5_wait_por_ready  main.o
+    0x0000f47a   0x0000f47a   0x00000002   PAD
+    0x0000f47c   0x0000f47c   0x0000001e   Code   RO          163    .text.bcd_to_dec    amx805_device.o
+    0x0000f49a   0x0000f49a   0x00000002   PAD
+    0x0000f49c   0x0000f49c   0x000000fe   Code   RO         1078    .text.buffer_configure  am_hal_uart.o
+    0x0000f59a   0x0000f59a   0x00000002   PAD
+    0x0000f59c   0x0000f59c   0x00000054   Code   RO           96    .text.compute_freq  iom_dma.o
+    0x0000f5f0   0x0000f5f0   0x00000154   Code   RO         1076    .text.config_baudrate  am_hal_uart.o
+    0x0000f744   0x0000f744   0x00000032   Code   RO           42    .text.debug_printf_enable  uart_debug.o
+    0x0000f776   0x0000f776   0x00000002   PAD
+    0x0000f778   0x0000f778   0x0000002e   Code   RO          167    .text.dec_to_bcd    amx805_device.o
+    0x0000f7a6   0x0000f7a6   0x00000002   PAD
+    0x0000f7a8   0x0000f7a8   0x000000a6   Code   RO          232    .text.decstr_to_int  am_util_stdio.o
+    0x0000f84e   0x0000f84e   0x00000002   PAD
+    0x0000f850   0x0000f850   0x00000118   Code   RO          262    .text.divu64_10     am_util_stdio.o
+    0x0000f968   0x0000f968   0x00000230   Code   RO          248    .text.ftoa          am_util_stdio.o
+    0x0000fb98   0x0000fb98   0x00000126   Code   RO          112    .text.i2c_callback  iom_i2c.o
+    0x0000fcbe   0x0000fcbe   0x00000002   PAD
+    0x0000fcc0   0x0000fcc0   0x00000040   Code   RO           66    .text.iom_dma_configure  iom_dma.o
+    0x0000fd00   0x0000fd00   0x00000068   Code   RO           68    .text.iom_dma_enable  iom_dma.o
+    0x0000fd68   0x0000fd68   0x00000104   Code   RO           64    .text.iom_dma_i2c_configure  iom_dma.o
+    0x0000fe6c   0x0000fe6c   0x0000004e   Code   RO           88    .text.iom_dma_int_enable  iom_dma.o
+    0x0000feba   0x0000feba   0x00000002   PAD
+    0x0000febc   0x0000febc   0x000000b2   Code   RO           60    .text.iom_dma_spi_configure  iom_dma.o
+    0x0000ff6e   0x0000ff6e   0x00000002   PAD
+    0x0000ff70   0x0000ff70   0x0000031c   Code   RO           72    .text.iom_dma_start  iom_dma.o
+    0x0001028c   0x0001028c   0x0000025a   Code   RO           62    .text.iom_get_interface_clock_cfg  iom_dma.o
+    0x000104e6   0x000104e6   0x00000002   PAD
+    0x000104e8   0x000104e8   0x000000a4   Code   RO          114    .text.iom_gpio_config  iom_i2c.o
+    0x0001058c   0x0001058c   0x00000124   Code   RO           74    .text.iom_i2c_dma_pop_tail  iom_dma.o
+    0x000106b0   0x000106b0   0x0000008a   Code   RO          120    .text.iom_i2c_init  iom_i2c.o
+    0x0001073a   0x0001073a   0x00000002   PAD
+    0x0001073c   0x0001073c   0x00000104   Code   RO          118    .text.iom_i2c_read  iom_i2c.o
+    0x00010840   0x00010840   0x00000102   Code   RO          116    .text.iom_i2c_write  iom_i2c.o
+    0x00010942   0x00010942   0x00000002   PAD
+    0x00010944   0x00010944   0x00000044   Code   RO           34    .text.itm_printf_enable  uart_debug.o
+    0x00010988   0x00010988   0x0000000c   Code   RO            2    .text.low_power_init  main.o
+    0x00010994   0x00010994   0x000000ec   Code   RO           20    .text.main          main.o
+    0x00010a80   0x00010a80   0x0000004a   Code   RO            6    .text.mthToIndex    main.o
+    0x00010aca   0x00010aca   0x00000002   PAD
+    0x00010acc   0x00010acc   0x0000003e   Code   RO          238    .text.ndigits_in_hex  am_util_stdio.o
+    0x00010b0a   0x00010b0a   0x00000002   PAD
+    0x00010b0c   0x00010b0c   0x00000030   Code   RO          246    .text.ndigits_in_i64  am_util_stdio.o
+    0x00010b3c   0x00010b3c   0x0000003c   Code   RO          242    .text.ndigits_in_u64  am_util_stdio.o
+    0x00010b78   0x00010b78   0x00000028   Code   RO           98    .text.onebit        iom_dma.o
+    0x00010ba0   0x00010ba0   0x00000050   Code   RO          236    .text.padbuffer     am_util_stdio.o
+    0x00010bf0   0x00010bf0   0x00000022   Code   RO          431    .text.pincfg_equ    am_hal_gpio.o
+    0x00010c12   0x00010c12   0x00000002   PAD
+    0x00010c14   0x00010c14   0x000000de   Code   RO          759    .text.pwrctrl_periph_disable_msk_check  am_hal_pwrctrl.o
+    0x00010cf2   0x00010cf2   0x00000002   PAD
+    0x00010cf4   0x00010cf4   0x000000d4   Code   RO         1116    .text.read_nonblocking  am_hal_uart.o
+    0x00010dc8   0x00010dc8   0x000000ce   Code   RO         1084    .text.read_timeout  am_hal_uart.o
+    0x00010e96   0x00010e96   0x00000002   PAD
+    0x00010e98   0x00010e98   0x0000004c   Code   RO         1100    .text.rx_queue_update  am_hal_uart.o
+    0x00010ee4   0x00010ee4   0x00000066   Code   RO          318    .text.set_LPMMODE   am_hal_cachectrl.o
+    0x00010f4a   0x00010f4a   0x00000002   PAD
+    0x00010f4c   0x00010f4c   0x00000066   Code   RO          322    .text.set_RDWAIT    am_hal_cachectrl.o
+    0x00010fb2   0x00010fb2   0x00000002   PAD
+    0x00010fb4   0x00010fb4   0x00000066   Code   RO          320    .text.set_SEDELAY   am_hal_cachectrl.o
+    0x0001101a   0x0001101a   0x00000002   PAD
+    0x0001101c   0x0001101c   0x000000a0   Code   RO          771    .text.simobuck_updates  am_hal_pwrctrl.o
+    0x000110bc   0x000110bc   0x00000036   Code   RO          234    .text.simple_strlen  am_util_stdio.o
+    0x000110f2   0x000110f2   0x00000002   PAD
+    0x000110f4   0x000110f4   0x00000210   Code   RO           18    .text.sleep_loop    main.o
+    0x00011304   0x00011304   0x0000004a   Code   RO            4    .text.toVal         main.o
+    0x0001134e   0x0001134e   0x00000002   PAD
+    0x00011350   0x00011350   0x0000006e   Code   RO         1102    .text.tx_queue_update  am_hal_uart.o
+    0x000113be   0x000113be   0x00000002   PAD
+    0x000113c0   0x000113c0   0x00000086   Code   RO         1092    .text.uart_fifo_read  am_hal_uart.o
+    0x00011446   0x00011446   0x00000002   PAD
+    0x00011448   0x00011448   0x0000006c   Code   RO         1096    .text.uart_fifo_write  am_hal_uart.o
+    0x000114b4   0x000114b4   0x0000006e   Code   RO           38    .text.uart_printf_enable  uart_debug.o
+    0x00011522   0x00011522   0x00000002   PAD
+    0x00011524   0x00011524   0x0000004a   Code   RO           36    .text.uart_string_print  uart_debug.o
+    0x0001156e   0x0001156e   0x00000002   PAD
+    0x00011570   0x00011570   0x000000c0   Code   RO          240    .text.uint64_to_hexstr  am_util_stdio.o
+    0x00011630   0x00011630   0x00000088   Code   RO          244    .text.uint64_to_str  am_util_stdio.o
+    0x000116b8   0x000116b8   0x000000d2   Code   RO         1114    .text.write_nonblocking  am_hal_uart.o
+    0x0001178a   0x0001178a   0x00000002   PAD
+    0x0001178c   0x0001178c   0x000000ce   Code   RO         1082    .text.write_timeout  am_hal_uart.o
+    0x0001185a   0x0001185a   0x00000002   PAD
+    0x0001185c   0x0001185c   0x00000062   Code   RO         1556    x$fpl$d2f           fz_wm.l(d2f.o)
+    0x000118be   0x000118be   0x0000009c   Code   RO         1561    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
+    0x0001195a   0x0001195a   0x0000001a   Code   RO         1652    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x00011974   0x00011974   0x0000000a   Code   RO         1563    x$fpl$fretinf       fz_wm.l(fretinf.o)
+    0x0001197e   0x0001197e   0x00000000   Code   RO         1565    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x0001197e   0x0001197e   0x00000002   PAD
+    0x00011980   0x00011980   0x0000000c   Data   RO         1229    .rodata..L__const.am_hal_flash_store_ui32.SRAM_write_ui32  am_hal_flash.o
+    0x0001198c   0x0001198c   0x00000100   Data   RO          291    .rodata.am_cattr    am_util_string.o
+    0x00011a8c   0x00011a8c   0x00000003   Data   RO          326    .rodata.am_hal_cachectrl_defaults  am_hal_cachectrl.o
+    0x00011a8f   0x00011a8f   0x00000001   PAD
+    0x00011a90   0x00011a90   0x000000b4   Data   RO          776    .rodata.am_hal_pwrctrl_peripheral_control  am_hal_pwrctrl.o
+    0x00011b44   0x00011b44   0x00000004   Data   RO          459    .rodata.g_AM_HAL_GPIO_DISABLE  am_hal_gpio.o
+    0x00011b48   0x00011b48   0x00000004   Data   RO           48    .rodata.g_GPIO_COM_UART_RX  uart_debug.o
+    0x00011b4c   0x00011b4c   0x00000004   Data   RO           47    .rodata.g_GPIO_COM_UART_TX  uart_debug.o
+    0x00011b50   0x00011b50   0x00000004   Data   RO           46    .rodata.g_GPIO_ITM_SWO  uart_debug.o
+    0x00011b54   0x00011b54   0x00000004   Data   RO          132    .rodata.g_GPIO_RTC_CLKOUT  iom_i2c.o
+    0x00011b58   0x00011b58   0x00000004   Data   RO          133    .rodata.g_GPIO_RTC_EXTI  iom_i2c.o
+    0x00011b5c   0x00011b5c   0x00000004   Data   RO          131    .rodata.g_GPIO_RTC_EXTR  iom_i2c.o
+    0x00011b60   0x00011b60   0x00000004   Data   RO          130    .rodata.g_GPIO_RTC_FOUT  iom_i2c.o
+    0x00011b64   0x00011b64   0x00000004   Data   RO          134    .rodata.g_GPIO_RTC_PSW  iom_i2c.o
+    0x00011b68   0x00011b68   0x00000004   Data   RO          136    .rodata.g_GPIO_RTC_RST  iom_i2c.o
+    0x00011b6c   0x00011b6c   0x00000004   Data   RO          129    .rodata.g_GPIO_RTC_SCL  iom_i2c.o
+    0x00011b70   0x00011b70   0x00000004   Data   RO          128    .rodata.g_GPIO_RTC_SDA  iom_i2c.o
+    0x00011b74   0x00011b74   0x00000004   Data   RO          137    .rodata.g_GPIO_RTC_TIRQ  iom_i2c.o
+    0x00011b78   0x00011b78   0x00000004   Data   RO          135    .rodata.g_GPIO_RTC_WDI  iom_i2c.o
+    0x00011b7c   0x00011b7c   0x00000060   Data   RO         1226    .rodata.g_am_hal_flash  am_hal_flash.o
+    0x00011bdc   0x00011bdc   0x00000030   Data   RO          301    .rodata.g_iDaysPerMonth  am_util_time.o
+    0x00011c0c   0x00011c0c   0x00000030   Data   RO          302    .rodata.g_iMonthOffsets  am_util_time.o
+    0x00011c3c   0x00011c3c   0x00000028   Data   RO           52    .rodata.g_sBspUartConfig  uart_debug.o
+    0x00011c64   0x00011c64   0x00000032   Data   RO          472    .rodata.g_ui8Bit76Capabilities  am_hal_gpio.o
+    0x00011c96   0x00011c96   0x00000032   Data   RO          473    .rodata.g_ui8Inpen  am_hal_gpio.o
+    0x00011cc8   0x00011cc8   0x000000c8   Data   RO          475    .rodata.g_ui8NCEtable  am_hal_gpio.o
+    0x00011d90   0x00011d90   0x00000032   Data   RO          474    .rodata.g_ui8nCEpins  am_hal_gpio.o
+    0x00011dc2   0x00011dc2   0x00000106   Data   RO           22    .rodata.str1.1      main.o
+    0x00011ec8   0x00011ec8   0x00000020   Data   RO         1727    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x00011e98, Size: 0x000049c8, Max: 0x00060000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x00011ee8, Size: 0x000049c8, Max: 0x00060000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000000   0x00011e98   0x00000004   Data   RW         1543    .data               libam_hal.lib(am_hal_global.o)
-    0x10000004   0x00011e9c   0x00000030   Data   RW           24    .data.g_pcMonth     main.o
-    0x10000034   0x00011ecc   0x0000001c   Data   RW           23    .data.g_pcWeekday   main.o
-    0x10000050   0x00011ee8   0x00000008   Data   RW          139    .data.g_sIOMI2cConfig  iom_i2c.o
-    0x10000058   0x00011ef0   0x00000004   Data   RW           50    .data.g_ui32PrintInterface  uart_debug.o
-    0x1000005c   0x00011ef4   0x00000001   Data   RW          123    .data.i2c_rd_callback_cntx  iom_i2c.o
-    0x1000005d   0x00011ef5   0x00000001   Data   RW          122    .data.i2c_wr_callback_cntx  iom_i2c.o
-    0x1000005e   0x00011ef6   0x00000002   PAD
+    0x10000000   0x00011ee8   0x00000004   Data   RW         1543    .data               libam_hal.lib(am_hal_global.o)
+    0x10000004   0x00011eec   0x00000030   Data   RW           24    .data.g_pcMonth     main.o
+    0x10000034   0x00011f1c   0x0000001c   Data   RW           23    .data.g_pcWeekday   main.o
+    0x10000050   0x00011f38   0x00000008   Data   RW          139    .data.g_sIOMI2cConfig  iom_i2c.o
+    0x10000058   0x00011f40   0x00000004   Data   RW           50    .data.g_ui32PrintInterface  uart_debug.o
+    0x1000005c   0x00011f44   0x00000001   Data   RW          123    .data.i2c_rd_callback_cntx  iom_i2c.o
+    0x1000005d   0x00011f45   0x00000001   Data   RW          122    .data.i2c_wr_callback_cntx  iom_i2c.o
+    0x1000005e   0x00011f46   0x00000002   PAD
     0x10000060        -       0x00000060   Zero   RW         1592    .bss                c_w.l(libspace.o)
     0x100000c0        -       0x00000018   Zero   RW          101    .bss.callback_cntx  iom_dma.o
     0x100000d8        -       0x00000004   Zero   RW          799    .bss.gAmHalResetStatus  am_hal_reset.o
@@ -3691,18 +3696,18 @@ Memory Map of the image
     0x100000e0        -       0x000033d8   Zero   RW          574    .bss.g_IOMhandles   am_hal_iom.o
     0x100034b8        -       0x000000d0   Zero   RW         1118    .bss.g_am_hal_uart_states  am_hal_uart.o
     0x10003588        -       0x00000001   Zero   RW          265    .bss.g_bTxtXlate    am_util_stdio.o
-    0x10003589   0x00011ef6   0x00000003   PAD
+    0x10003589   0x00011f46   0x00000003   PAD
     0x1000358c        -       0x00000004   Zero   RW          264    .bss.g_pfnCharPrint  am_util_stdio.o
     0x10003590        -       0x00000400   Zero   RW          266    .bss.g_prfbuf       am_util_stdio.o
     0x10003990        -       0x0000000a   Zero   RW           25    .bss.g_psTimeRegs   main.o
-    0x1000399a   0x00011ef6   0x00000002   PAD
+    0x1000399a   0x00011f46   0x00000002   PAD
     0x1000399c        -       0x00000004   Zero   RW           51    .bss.g_sCOMUART     uart_debug.o
     0x100039a0        -       0x00000001   Zero   RW          124    .bss.i2c_cmd_completed  iom_i2c.o
     0x100039a1        -       0x00000001   Zero   RW          125    .bss.i2c_cmd_error  iom_i2c.o
     0x100039a2        -       0x00000001   Zero   RW          127    .bss.i2c_cmd_no_ack_error  iom_i2c.o
     0x100039a3        -       0x00000001   Zero   RW          126    .bss.i2c_dma_completed  iom_i2c.o
     0x100039a4        -       0x00000001   Zero   RW          102    .bss.pop_tail       iom_dma.o
-    0x100039a5   0x00011ef6   0x00000003   PAD
+    0x100039a5   0x00011f46   0x00000003   PAD
     0x100039a8        -       0x00000004   Zero   RW          103    .bss.transaction_rx_buff  iom_dma.o
     0x100039ac        -       0x00000004   Zero   RW          104    .bss.transaction_rx_size  iom_dma.o
     0x100039b0        -       0x00000018   Zero   RW          100    .bss.user_callbacks  iom_dma.o
@@ -3717,35 +3722,35 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1082         18          3          0          0       7661   am_hal_cachectrl.o
-       502         10          0          0          0      18041   am_hal_clkgen.o
-       216          0          0          0          0       7244   am_hal_cmdq.o
-       280          0         96          0          0      20491   am_hal_flash.o
-      1406         10        354          0          0      31160   am_hal_gpio.o
-        22          0          0          0          0        773   am_hal_interrupt.o
-      1124          0          0          0      13272      41721   am_hal_iom.o
-       210          0          0          0          0      11087   am_hal_itm.o
-      1158          0        180          0          0      21482   am_hal_pwrctrl.o
-       366          0          0          0          0       1951   am_hal_queue.o
-         0          0          0          0          4       5103   am_hal_reset.o
-        18          0          0          0          0       7885   am_hal_rtc.o
-       252          0          0          0          0      10646   am_hal_tpiu.o
-      3356          4          0          0        208      23506   am_hal_uart.o
-        96          0          0          0          0       1224   am_util_delay.o
-      3370        102          0          0       1029       8556   am_util_stdio.o
-       182          0        256          0          0       2460   am_util_string.o
-       462          0         96          0          0       1180   am_util_time.o
-      1660          0          0          0          0      10610   amx805_device.o
-      3124          6          0          0         57      16631   iom_dma.o
-      1114          0         40         10          8       4409   iom_i2c.o
-      1274          0        262         76         10       4903   main.o
+      1082         18          3          0          0       7662   am_hal_cachectrl.o
+       502         10          0          0          0      18042   am_hal_clkgen.o
+       216          0          0          0          0       7245   am_hal_cmdq.o
+       270          0        108          0          0      20492   am_hal_flash.o
+      1406         10        354          0          0      31158   am_hal_gpio.o
+        22          0          0          0          0        774   am_hal_interrupt.o
+      1124          0          0          0      13272      41722   am_hal_iom.o
+       210          0          0          0          0      11088   am_hal_itm.o
+      1158          0        180          0          0      21483   am_hal_pwrctrl.o
+       366          0          0          0          0       1952   am_hal_queue.o
+         0          0          0          0          4       5104   am_hal_reset.o
+        18          0          0          0          0       7883   am_hal_rtc.o
+       252          0          0          0          0      10647   am_hal_tpiu.o
+      3356          4          0          0        208      23507   am_hal_uart.o
+        96          0          0          0          0       1225   am_util_delay.o
+      3370        102          0          0       1029       8594   am_util_stdio.o
+       182          0        256          0          0       2461   am_util_string.o
+       462          0         96          0          0       1181   am_util_time.o
+      1660          0          0          0          0      10608   amx805_device.o
+      3124          6          0          0         57      16632   iom_dma.o
+      1114          0         40         10          8       4410   iom_i2c.o
+      1354          0        262         76         10       4399   main.o
        332        274          0          0       4096       1244   startup_keil.o
-       302          0         52          4          4       2982   uart_debug.o
+       302          0         52          4          4       2983   uart_debug.o
 
     ----------------------------------------------------------------------
-     22028        424       1374         92      18696     262950   Object Totals
+     22100        424       1384         92      18696     262496   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       120          0          3          2          8          0   (incl. Padding)
+       122          0          1          2          8          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3781,8 +3786,8 @@ Image component sizes
          0          0          0          4          0          0   am_hal_global.o
 
     ----------------------------------------------------------------------
-       810         24          0          4         96       1244   Library Totals
-         6          0          0          0          0          0   (incl. Padding)
+       812         24          0          4         96       1244   Library Totals
+         8          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3793,7 +3798,7 @@ Image component sizes
          0          0          0          4          0          0   libam_hal.lib
 
     ----------------------------------------------------------------------
-       810         24          0          4         96       1244   Library Totals
+       812         24          0          4         96       1244   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -3802,15 +3807,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     22838        448       1374         96      18792     263114   Grand Totals
-     22838        448       1374         96      18792     263114   ELF Image Totals
-     22838        448       1374         96          0          0   ROM Totals
+     22912        448       1384         96      18792     262660   Grand Totals
+     22912        448       1384         96      18792     262660   ELF Image Totals
+     22912        448       1384         96          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                24212 (  23.64kB)
+    Total RO  Size (Code + RO Data)                24296 (  23.73kB)
     Total RW  Size (RW Data + ZI Data)             18888 (  18.45kB)
-    Total ROM Size (Code + RO Data + RW Data)      24308 (  23.74kB)
+    Total ROM Size (Code + RO Data + RW Data)      24392 (  23.82kB)
 
 ==============================================================================
 
